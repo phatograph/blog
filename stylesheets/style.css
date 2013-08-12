@@ -131,14 +131,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 9, ../_sass/style.scss */
 body {
   line-height: 1.5;
-  color: #333333;
+  color: #444444;
   font-size: 18px;
   background: #f9f9f7;
   font-family: 'Droid Serif', serif;
 }
 /* line 16, ../_sass/style.scss */
 body a {
-  color: #333333;
+  color: #444444;
   text-decoration: none;
 }
 /* line 21, ../_sass/style.scss */
@@ -181,54 +181,87 @@ div.content div.info a {
 }
 /* line 51, ../_sass/style.scss */
 div.content div.info a:hover {
-  color: #333333;
+  color: #444444;
 }
-/* line 57, ../_sass/style.scss */
+/* line 54, ../_sass/style.scss */
+div.content div.info a:hover i.icon-heart {
+  color: #ff0084;
+}
+/* line 59, ../_sass/style.scss */
+div.content div.info a i.icon-heart {
+  color: #ea4c89;
+}
+/* line 65, ../_sass/style.scss */
 div.content div.info h1 a {
   font-size: 1em;
   font-weight: bold;
 }
-/* line 63, ../_sass/style.scss */
+/* line 71, ../_sass/style.scss */
 div.content div.info p {
   line-height: 1.3;
   font-size: 0.75em;
   color: #aaaaaa;
   margin-top: 15px;
 }
-/* line 69, ../_sass/style.scss */
+/* line 77, ../_sass/style.scss */
 div.content div.info p:last-child {
   margin-bottom: 0;
 }
-/* line 73, ../_sass/style.scss */
+/* line 81, ../_sass/style.scss */
 div.content div.info p.links {
   line-height: 1.2;
   font-size: 1.5em;
 }
-/* line 80, ../_sass/style.scss */
+/* line 88, ../_sass/style.scss */
 div.content div.post {
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
 }
-/* line 83, ../_sass/style.scss */
+/* line 91, ../_sass/style.scss */
 div.content div.post:last-child {
   margin-bottom: 0;
 }
-/* line 87, ../_sass/style.scss */
+/* line 95, ../_sass/style.scss */
 div.content div.post h3 {
   font-size: 2em;
   font-weight: bold;
 }
-/* line 93, ../_sass/style.scss */
+/* line 101, ../_sass/style.scss */
 div.content div.post p.date {
   line-height: 1;
   margin-bottom: 1.25em;
   color: #aaaaaa;
 }
-/* line 99, ../_sass/style.scss */
+/* line 107, ../_sass/style.scss */
+div.content div.post p.date a {
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  color: #aaaaaa;
+  text-decoration: none;
+}
+/* line 112, ../_sass/style.scss */
+div.content div.post p.date a:after {
+  content: ', ';
+}
+/* line 116, ../_sass/style.scss */
+div.content div.post p.date a:first-child:before {
+  content: 'in ';
+}
+/* line 120, ../_sass/style.scss */
+div.content div.post p.date a:last-child:after {
+  content: '';
+}
+/* line 124, ../_sass/style.scss */
+div.content div.post p.date a:hover {
+  color: #444444;
+}
+/* line 130, ../_sass/style.scss */
 div.content div.post p a {
   text-decoration: underline;
 }
 
-/* line 107, ../_sass/style.scss */
+/* line 138, ../_sass/style.scss */
 div.footer {
   padding: 50px 0;
   border-top: 1px solid #fff;

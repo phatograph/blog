@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "Handmade Timestamp Service in OSX"
+tags:
+- OSX
+- Blogging
 ---
 
 When I need to test a form while developing, I was really bored and too lazy to think of some text to fill in any text input. Things like `dasdsa` or `sajklhdas` are too messy, and even though I have [LittleIpsum](http://littleipsum.com/) installed it still takes too many clicks and mouse dragging. There must be a better way. I thought about using a timestamp.

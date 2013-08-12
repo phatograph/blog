@@ -3,7 +3,7 @@
 
 @include global-reset;
 
-$main-color: #333;
+$main-color: #444;
 $main-color-light: #aaa;
 
 body {
@@ -50,6 +50,14 @@ div.content {
 
             &:hover {
                 color: $main-color;
+
+                i.icon-heart {
+                    color: #ff0084;
+                }
+            }
+
+            i.icon-heart {
+                color: #ea4c89;
             }
         }
 
@@ -78,7 +86,7 @@ div.content {
     }
 
     div.post {
-        margin-bottom: 1.5em;
+        margin-bottom: 3em;
 
         &:last-child {
             margin-bottom: 0;
@@ -94,6 +102,29 @@ div.content {
                 line-height: 1;
                 margin-bottom: 1.25em;
                 color: $main-color-light;
+                // font-size: 0.75em;
+
+                a {
+                    @include transition(all 0.4s);
+                    color: $main-color-light;
+                    text-decoration: none;
+
+                    &:after {
+                        content: ', ';
+                    }
+
+                    &:first-child:before {
+                        content: 'in ';
+                    }
+
+                    &:last-child:after {
+                        content: '';
+                    }
+
+                    &:hover {
+                        color: $main-color;
+                    }
+                }
             }
 
             a {
