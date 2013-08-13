@@ -7,9 +7,11 @@ layout: default
     <h3><a href="{{ post.url }}">{{ page.title }}</a></h3>
     <p class="date">
       {{ page.date | date_to_long_string }}
-      {% for tag in page.tags %}
-        <a href="/tag/{{ tag }}">{{ tag }}</a>
-      {% endfor %}
+      {% capture tag_length %}{{ page.tags | size }}{% endcapture %}
+      {% if tag_length != '0'  %}
+        in
+        {{ page.tags | tag_links }}
+      {% endif %}
     </p>
     <div class="body">
       {{ content }}

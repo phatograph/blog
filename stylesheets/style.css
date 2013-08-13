@@ -216,79 +216,75 @@ div.content div.info p.links {
   font-size: 1.5em;
 }
 /* line 94, ../_sass/style.scss */
-div.content div.post {
-  margin-bottom: 3em;
+div.content div.posts {
+  padding-bottom: 120px;
 }
 /* line 97, ../_sass/style.scss */
-div.content div.post:last-child {
+div.content div.posts div.post {
+  margin-bottom: 3em;
+}
+/* line 100, ../_sass/style.scss */
+div.content div.posts div.post:last-child {
   margin-bottom: 0;
 }
-/* line 101, ../_sass/style.scss */
-div.content div.post > h3 {
+/* line 104, ../_sass/style.scss */
+div.content div.posts div.post > h3 {
   font-size: 2em;
   font-weight: bold;
   line-height: 1em;
   padding-bottom: 0.3em;
 }
-/* line 108, ../_sass/style.scss */
-div.content div.post p.date {
+/* line 111, ../_sass/style.scss */
+div.content div.posts div.post p.date {
   line-height: 1;
   margin-bottom: 1.25em;
   color: #aaaaaa;
 }
-/* line 114, ../_sass/style.scss */
-div.content div.post p.date a {
+/* line 117, ../_sass/style.scss */
+div.content div.posts div.post p.date a {
   color: #aaaaaa;
 }
-/* line 117, ../_sass/style.scss */
-div.content div.post p.date a:after {
-  content: ', ';
-}
-/* line 121, ../_sass/style.scss */
-div.content div.post p.date a:last-child:after {
-  content: '';
-}
-/* line 125, ../_sass/style.scss */
-div.content div.post p.date a:hover {
+/* line 120, ../_sass/style.scss */
+div.content div.posts div.post p.date a:hover {
   color: #444444;
 }
-/* line 132, ../_sass/style.scss */
-div.content div.post div.body p, div.content div.post div.body div.highlight, div.content div.post div.body ul, div.content div.post div.body h3, div.content div.post div.body blockquote, div.content div.post div.body .twitter-tweet {
+/* line 127, ../_sass/style.scss */
+div.content div.posts div.post div.body p, div.content div.posts div.post div.body div.highlight, div.content div.posts div.post div.body ul, div.content div.posts div.post div.body h3, div.content div.posts div.post div.body blockquote, div.content div.posts div.post div.body .twitter-tweet {
   margin-bottom: 30px !important;
 }
-/* line 135, ../_sass/style.scss */
-div.content div.post div.body p:last-child, div.content div.post div.body div.highlight:last-child, div.content div.post div.body ul:last-child, div.content div.post div.body h3:last-child, div.content div.post div.body blockquote:last-child, div.content div.post div.body .twitter-tweet:last-child {
+/* line 130, ../_sass/style.scss */
+div.content div.posts div.post div.body p:last-child, div.content div.posts div.post div.body div.highlight:last-child, div.content div.posts div.post div.body ul:last-child, div.content div.posts div.post div.body h3:last-child, div.content div.posts div.post div.body blockquote:last-child, div.content div.posts div.post div.body .twitter-tweet:last-child {
   margin-bottom: 0 !important;
 }
-/* line 139, ../_sass/style.scss */
-div.content div.post div.body p a, div.content div.post div.body div.highlight a, div.content div.post div.body ul a, div.content div.post div.body h3 a, div.content div.post div.body blockquote a, div.content div.post div.body .twitter-tweet a {
+/* line 134, ../_sass/style.scss */
+div.content div.posts div.post div.body p a, div.content div.posts div.post div.body div.highlight a, div.content div.posts div.post div.body ul a, div.content div.posts div.post div.body h3 a, div.content div.posts div.post div.body blockquote a, div.content div.posts div.post div.body .twitter-tweet a {
   text-decoration: underline;
 }
-/* line 144, ../_sass/style.scss */
-div.content div.post div.body h3 {
+/* line 139, ../_sass/style.scss */
+div.content div.posts div.post div.body h3 {
   font-weight: bold;
 }
-/* line 148, ../_sass/style.scss */
-div.content div.post div.body blockquote {
+/* line 143, ../_sass/style.scss */
+div.content div.posts div.post div.body blockquote {
   border-left: 5px solid #f1f1f1;
   padding: 1em 2em;
   font-style: italic;
 }
-/* line 154, ../_sass/style.scss */
-div.content div.post div.body div.highlight {
+/* line 149, ../_sass/style.scss */
+div.content div.posts div.post div.body div.highlight {
   font-family: 'Source Code Pro', sans-serif;
   overflow-x: auto;
   padding: 1em;
   font-size: 13px;
   background: #f1f1f1;
 }
-/* line 162, ../_sass/style.scss */
-div.content div.post div.body ul {
+/* line 157, ../_sass/style.scss */
+div.content div.posts div.post div.body ul {
   list-style-type: disc;
   padding-left: 3em;
 }
-/* line 168, ../_sass/style.scss */
-div.content div.post div.body p > code {
+/* line 163, ../_sass/style.scss */
+div.content div.posts div.post div.body p > code {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -301,8 +297,8 @@ div.content div.post div.body p > code {
   /* better for 2 lines separating */
   background: #f1f1f1;
 }
-/* line 177, ../_sass/style.scss */
-div.content div.post div.body p > img {
+/* line 172, ../_sass/style.scss */
+div.content div.posts div.post div.body p > img {
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   -ms-border-radius: 0.3em;
@@ -319,22 +315,21 @@ div.content div.post div.body p > img {
   margin: 0 auto;
   display: block;
 }
-/* line 188, ../_sass/style.scss */
-div.content div.post div.body h3 {
+/* line 183, ../_sass/style.scss */
+div.content div.posts div.post div.body h3 {
   font-size: 1.5em;
 }
-/* line 192, ../_sass/style.scss */
-div.content div.post div.body .twitter-tweet {
+/* line 187, ../_sass/style.scss */
+div.content div.posts div.post div.body .twitter-tweet {
   margin-top: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-/* line 200, ../_sass/style.scss */
+/* line 196, ../_sass/style.scss */
 div.content div.pagination {
-  padding-top: 120px;
   text-align: center;
 }
-/* line 204, ../_sass/style.scss */
+/* line 199, ../_sass/style.scss */
 div.content div.pagination span, div.content div.pagination a {
   display: inline-block;
   padding: 0 10px;
@@ -342,16 +337,20 @@ div.content div.pagination span, div.content div.pagination a {
   vertical-align: middle;
   color: #aaaaaa;
 }
-/* line 212, ../_sass/style.scss */
+/* line 207, ../_sass/style.scss */
 div.content div.pagination a {
   font-size: 2em;
 }
-/* line 215, ../_sass/style.scss */
+/* line 210, ../_sass/style.scss */
 div.content div.pagination a:hover {
   color: #ff0084;
 }
+/* line 214, ../_sass/style.scss */
+div.content div.pagination a.hidden {
+  visibility: hidden;
+}
 
-/* line 223, ../_sass/style.scss */
+/* line 222, ../_sass/style.scss */
 div.footer {
   padding: 50px 0;
   border-top: 1px solid #fff;
