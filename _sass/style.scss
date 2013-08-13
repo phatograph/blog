@@ -5,6 +5,9 @@
 
 $main-color: #444;
 $main-color-light: #aaa;
+$main-color-syntax: #f1f1f1;
+$main-color-pink-hover: #ff0084;
+
 
 body {
     line-height: 1.5;
@@ -14,8 +17,13 @@ body {
     font-family: 'Droid Serif', serif;
 
     a {
+        @include transition(all 0.4s);
         color: $main-color;
         text-decoration: none;
+
+        &:hover {
+            color: $main-color-pink-hover;
+        }
     }
 
     h1, h3 {
@@ -38,21 +46,19 @@ div.content {
     div.info {
         position: absolute;
         left: -270px;
-        top: 0.5em;
         width: 200px;
         text-align: right;
 
         > * { padding-right: 5px; }
 
         a {
-            @include transition(all 0.4s);
             color: $main-color-light;
 
             &:hover {
                 color: $main-color;
 
                 i.icon-heart {
-                    color: #ff0084;
+                    color: $main-color-pink-hover;
                 }
             }
 
@@ -92,43 +98,105 @@ div.content {
             margin-bottom: 0;
         }
 
-        h3 {
+        > h3 {
             font-size: 2em;
             font-weight: bold;
+            line-height: 1em;
+            padding-bottom: 0.3em;
         }
 
-        p {
-            &.date {
-                line-height: 1;
-                margin-bottom: 1.25em;
+        p.date {
+            line-height: 1;
+            margin-bottom: 1.25em;
+            color: $main-color-light;
+            // font-size: 0.75em;
+
+            a {
                 color: $main-color-light;
-                // font-size: 0.75em;
+
+                &:after {
+                    content: ', ';
+                }
+
+                &:first-child:before {
+                    content: 'in ';
+                }
+
+                &:last-child:after {
+                    content: '';
+                }
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+        }
+
+        div.body {
+            p, div.highlight, ul, h3, blockquote, .twitter-tweet {
+                margin-bottom: 30px !important;
+
+                &:last-child {
+                    margin-bottom: 0 !important;
+                }
 
                 a {
-                    @include transition(all 0.4s);
-                    color: $main-color-light;
-                    text-decoration: none;
-
-                    &:after {
-                        content: ', ';
-                    }
-
-                    &:first-child:before {
-                        content: 'in ';
-                    }
-
-                    &:last-child:after {
-                        content: '';
-                    }
-
-                    &:hover {
-                        color: $main-color;
-                    }
+                    text-decoration: underline;
                 }
             }
 
-            a {
-                text-decoration: underline;
+            h3 {
+                font-weight: bold;
+            }
+
+            blockquote {
+                border-left: 5px solid $main-color-syntax;
+                padding: 1em 2em;
+                font-style: italic;
+            }
+
+            div.highlight {
+                font-family: 'Source Code Pro', sans-serif;
+                overflow-x: auto;
+                padding: 1em;
+                font-size: 13px;
+                background: $main-color-syntax;
+            }
+
+            ul {
+                list-style-type: disc;
+                padding-left: 3em;
+            }
+
+            p {
+                > code {
+                    @include border-radius(3px);
+                    font-family: 'Source Code Pro', sans-serif;
+                    display: inline-block;
+                    padding: 0 0.4em;
+                    line-height: 1.3; /* better for 2 lines separating */
+                    background: $main-color-syntax;
+                }
+
+                > img {
+                    @include border-radius(0.3em);
+                    @include box-shadow(rgba(0, 0, 0, 0.15) 0 1px 4px);
+                    @include box-sizing(border-box);
+                    max-width: 100%;
+                    padding: 10px;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            .twitter-tweet {
+                margin-top: 0 !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
         }
     }
@@ -141,4 +209,5 @@ div.footer {
     color: $main-color-light;
     font-size: 0.75em;
     text-align: center;
+    font-family: 'Ubuntu', sans-serif;
 }
