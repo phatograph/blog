@@ -2,3 +2,5 @@ name: phato.blog
 markdown: redcarpet
 pygments: true
 permalink: /post/:year/:month/:day/:title
+paginate: 3
+paginate_path: /page/:num

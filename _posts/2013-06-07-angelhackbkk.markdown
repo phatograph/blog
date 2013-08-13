@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "#AngelHackBKK"
-categories:
+tags:
 ---
 
 <p style="text-align: center;">

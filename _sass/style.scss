@@ -40,7 +40,7 @@ body {
 
 div.content {
     background: #fff;
-    padding: 120px 0;
+    padding: 120px 0 60px;
     border-bottom: 1px solid #e0e0df;
 
     div.info {
@@ -197,6 +197,27 @@ div.content {
                 margin-top: 0 !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
+            }
+        }
+    }
+
+    div.pagination {
+        padding-top: 120px;
+        text-align: center;
+
+        span, a {
+            display: inline-block;
+            padding: 0 10px;
+            line-height: 1px;
+            vertical-align: middle;
+            color: $main-color-light;
+        }
+
+        a {
+            font-size: 2em;
+
+            &:hover {
+                color: $main-color-pink-hover;
             }
         }
     }
