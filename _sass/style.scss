@@ -118,10 +118,6 @@ div.content {
                     content: ', ';
                 }
 
-                &:first-child:before {
-                    content: 'in ';
-                }
-
                 &:last-child:after {
                     content: '';
                 }
