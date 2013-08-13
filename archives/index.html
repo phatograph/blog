@@ -14,8 +14,10 @@ title: Archives
         {% unless month == this_month %}
           {% assign month = this_month %}
           <div class="archive-date">
-            <p class="year">{{ year }}</p>
-            <p class="month">{{ month }}</p>
+            <a id="{{ year }}-{{ month | downcase }}" href="#{{ year }}-{{ month | downcase }}">
+              <p class="year">{{ year }}</p>
+              <p class="month">{{ month }}</p>
+            </a>
           </div>
         {% endunless %}
       <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>

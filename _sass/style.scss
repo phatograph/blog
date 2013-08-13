@@ -194,23 +194,29 @@ div.content {
             }
 
             div.archive-date {
-                @include opacity(0.5);
                 position: absolute;
                 left: 700 + 70px;
-                padding: 1em;
-                background: $main-color-pink;
                 font-family: 'Source Code Pro', sans-serif;
 
-                p {
-                    color: #fff;
-                    line-height: 1;
+                a {
+                    @include opacity(0.5);
+                    display: block;
+                    padding: 1em;
+                    background: $main-color-pink;
 
-                    &.year {
-                        font-size: 1em;
-                    }
+                    &:hover { @include opacity(1); }
 
-                    &.month {
-                        font-size: 2em;
+                    p {
+                        color: #fff;
+                        line-height: 1;
+
+                        &.year {
+                            font-size: 1em;
+                        }
+
+                        &.month {
+                            font-size: 2em;
+                        }
                     }
                 }
             }
