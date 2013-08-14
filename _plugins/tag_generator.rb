@@ -67,6 +67,11 @@ module Jekyll
     def tag_link(tag)
       "<a class='tag' href='/blog/tag/#{tag.gsub(/\s+/, '-').downcase}/'>#{tag}</a>"
     end
+
+    def gh_history_link(id)
+      id = id.gsub(/\/post\//, '').gsub('/', '-')
+      "https://github.com/phatograph/blog/commits/master/_posts/#{id}.markdown"
+    end
   end
 
 end

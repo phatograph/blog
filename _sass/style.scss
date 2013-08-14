@@ -118,6 +118,16 @@ div.content {
             > h3 { font-size: 2em; }
             > h4 { font-size: 1.5em; }
 
+            a.history {
+                float: right;
+                margin: 0 0 1em 1em;
+
+                i {
+                    font-size: 2em;
+                    line-height: 1em;
+                }
+            }
+
             p.date {
                 line-height: 1;
                 margin-bottom: 1.25em;
@@ -173,10 +183,9 @@ div.content {
                     > code {
                         @include border-radius(3px);
                         font-family: 'Source Code Pro', sans-serif;
-                        display: inline-block;
                         padding: 0 0.4em;
-                        line-height: 1.3; /* better for 2 lines separating */
                         background: $main-color-syntax;
+                        word-wrap: break-word;
                     }
 
                     > img {
