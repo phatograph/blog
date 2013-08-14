@@ -138,10 +138,10 @@ body {
 }
 /* line 19, ../../_sass/style.scss */
 body a {
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  transition: all 0.4s;
+  -webkit-transition: color 0.4s;
+  -moz-transition: color 0.4s;
+  -o-transition: color 0.4s;
+  transition: color 0.4s;
   color: #444444;
   text-decoration: none;
 }
@@ -397,4 +397,31 @@ div.footer {
   font-size: 0.75em;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+}
+
+@media (max-width: 767px) {
+  /* line 262, ../../_sass/style.scss */
+  body {
+    font-size: 16px;
+  }
+
+  /* line 266, ../../_sass/style.scss */
+  .container {
+    width: auto;
+    margin: 0;
+  }
+
+  /* line 271, ../../_sass/style.scss */
+  div.content {
+    padding: 30px;
+  }
+  /* line 274, ../../_sass/style.scss */
+  div.content div.posts {
+    padding-bottom: 30px;
+  }
+
+  /* line 279, ../../_sass/style.scss */
+  div.footer {
+    padding: 20px 0;
+  }
 }
