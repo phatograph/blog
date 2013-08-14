@@ -155,7 +155,7 @@ body a {
 }
 /* line 32, ../../_sass/style.scss */
 body a:hover {
-  color: #ff0084;
+  color: #ff0084 !important;
 }
 /* line 37, ../../_sass/style.scss */
 body h1, body h3, body h4 {
@@ -194,108 +194,105 @@ div.content div.info a {
 div.content div.info a:hover {
   color: #444444;
 }
-/* line 68, ../../_sass/style.scss */
-div.content div.info a:hover i.icon-heart {
-  color: #ff0084;
-}
-/* line 73, ../../_sass/style.scss */
-div.content div.info a i.icon-heart {
+/* line 69, ../../_sass/style.scss */
+div.content div.info a i.icon-star {
   color: #ea4c89;
 }
-/* line 79, ../../_sass/style.scss */
+/* line 75, ../../_sass/style.scss */
 div.content div.info h1 a {
   font-size: 1em;
   font-weight: bold;
 }
-/* line 85, ../../_sass/style.scss */
+/* line 81, ../../_sass/style.scss */
 div.content div.info p {
   line-height: 1.3;
   font-size: 0.75em;
   color: #aaaaaa;
   margin-top: 15px;
 }
-/* line 91, ../../_sass/style.scss */
+/* line 87, ../../_sass/style.scss */
 div.content div.info p:last-child {
   margin-bottom: 0;
 }
-/* line 95, ../../_sass/style.scss */
+/* line 91, ../../_sass/style.scss */
 div.content div.info p.links {
   line-height: 1.2;
   font-size: 1.5em;
 }
-/* line 102, ../../_sass/style.scss */
+/* line 96, ../../_sass/style.scss */
+div.content div.info p.links a:hover {
+  color: #444444 !important;
+}
+/* line 104, ../../_sass/style.scss */
 div.content div.posts {
   padding-bottom: 120px;
 }
-/* line 105, ../../_sass/style.scss */
+/* line 107, ../../_sass/style.scss */
 div.content div.posts div.post {
   margin-bottom: 3em;
 }
-/* line 108, ../../_sass/style.scss */
+/* line 110, ../../_sass/style.scss */
 div.content div.posts div.post:last-child {
   margin-bottom: 0;
 }
-/* line 112, ../../_sass/style.scss */
+/* line 114, ../../_sass/style.scss */
 div.content div.posts div.post > h3, div.content div.posts div.post h4 {
   font-weight: bold;
   line-height: 1em;
   padding-bottom: 0.3em;
 }
-/* line 118, ../../_sass/style.scss */
+/* line 120, ../../_sass/style.scss */
 div.content div.posts div.post > h3 {
   font-size: 2em;
 }
-/* line 119, ../../_sass/style.scss */
+/* line 121, ../../_sass/style.scss */
 div.content div.posts div.post > h4 {
   font-size: 1.5em;
 }
-/* line 121, ../../_sass/style.scss */
+/* line 123, ../../_sass/style.scss */
 div.content div.posts div.post a.history {
   float: right;
   margin: 0 0 1em 1em;
+  color: #aaaaaa;
 }
-/* line 125, ../../_sass/style.scss */
+/* line 128, ../../_sass/style.scss */
 div.content div.posts div.post a.history i {
   font-size: 2em;
   line-height: 1em;
 }
-/* line 131, ../../_sass/style.scss */
+/* line 134, ../../_sass/style.scss */
 div.content div.posts div.post p.date {
   line-height: 1;
   margin-bottom: 1.25em;
   color: #aaaaaa;
 }
-/* line 137, ../../_sass/style.scss */
+/* line 140, ../../_sass/style.scss */
 div.content div.posts div.post p.date a {
   color: #aaaaaa;
 }
-/* line 140, ../../_sass/style.scss */
-div.content div.posts div.post p.date a:hover {
-  color: #ff0084;
-}
-/* line 147, ../../_sass/style.scss */
+/* line 146, ../../_sass/style.scss */
 div.content div.posts div.post div.body p, div.content div.posts div.post div.body div.highlight, div.content div.posts div.post div.body ul, div.content div.posts div.post div.body h3, div.content div.posts div.post div.body blockquote, div.content div.posts div.post div.body .twitter-tweet {
   margin-bottom: 30px !important;
 }
-/* line 150, ../../_sass/style.scss */
+/* line 149, ../../_sass/style.scss */
 div.content div.posts div.post div.body p:last-child, div.content div.posts div.post div.body div.highlight:last-child, div.content div.posts div.post div.body ul:last-child, div.content div.posts div.post div.body h3:last-child, div.content div.posts div.post div.body blockquote:last-child, div.content div.posts div.post div.body .twitter-tweet:last-child {
   margin-bottom: 0 !important;
 }
-/* line 154, ../../_sass/style.scss */
+/* line 153, ../../_sass/style.scss */
 div.content div.posts div.post div.body p a, div.content div.posts div.post div.body div.highlight a, div.content div.posts div.post div.body ul a, div.content div.posts div.post div.body h3 a, div.content div.posts div.post div.body blockquote a, div.content div.posts div.post div.body .twitter-tweet a {
   text-decoration: underline;
 }
-/* line 159, ../../_sass/style.scss */
+/* line 158, ../../_sass/style.scss */
 div.content div.posts div.post div.body h3 {
   font-weight: bold;
 }
-/* line 163, ../../_sass/style.scss */
+/* line 162, ../../_sass/style.scss */
 div.content div.posts div.post div.body blockquote {
   border-left: 5px solid #f1f1f1;
   padding: 1em 2em;
   font-style: italic;
 }
-/* line 169, ../../_sass/style.scss */
+/* line 168, ../../_sass/style.scss */
 div.content div.posts div.post div.body div.highlight {
   font-family: 'Source Code Pro', sans-serif;
   overflow-x: auto;
@@ -303,12 +300,12 @@ div.content div.posts div.post div.body div.highlight {
   font-size: 13px;
   background: #f1f1f1;
 }
-/* line 177, ../../_sass/style.scss */
+/* line 176, ../../_sass/style.scss */
 div.content div.posts div.post div.body ul {
   list-style-type: disc;
   padding-left: 3em;
 }
-/* line 183, ../../_sass/style.scss */
+/* line 182, ../../_sass/style.scss */
 div.content div.posts div.post div.body p > code {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -320,7 +317,7 @@ div.content div.posts div.post div.body p > code {
   background: #f1f1f1;
   word-wrap: break-word;
 }
-/* line 191, ../../_sass/style.scss */
+/* line 190, ../../_sass/style.scss */
 div.content div.posts div.post div.body p > img {
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -338,23 +335,23 @@ div.content div.posts div.post div.body p > img {
   margin: 0 auto;
   display: block;
 }
-/* line 202, ../../_sass/style.scss */
+/* line 201, ../../_sass/style.scss */
 div.content div.posts div.post div.body h3 {
   font-size: 1.5em;
 }
-/* line 206, ../../_sass/style.scss */
+/* line 205, ../../_sass/style.scss */
 div.content div.posts div.post div.body .twitter-tweet {
   margin-top: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-/* line 213, ../../_sass/style.scss */
+/* line 212, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date {
   position: absolute;
   left: 770px;
   font-family: 'Source Code Pro', sans-serif;
 }
-/* line 218, ../../_sass/style.scss */
+/* line 217, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -362,29 +359,29 @@ div.content div.posts div.post div.archive-date a {
   padding: 1em;
   background: #ea4c89;
 }
-/* line 224, ../../_sass/style.scss */
+/* line 223, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 226, ../../_sass/style.scss */
+/* line 225, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p {
   color: #fff;
   line-height: 1;
 }
-/* line 230, ../../_sass/style.scss */
+/* line 229, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.year {
   font-size: 1em;
 }
-/* line 234, ../../_sass/style.scss */
+/* line 233, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.month {
   font-size: 2em;
 }
-/* line 243, ../../_sass/style.scss */
+/* line 242, ../../_sass/style.scss */
 div.content div.pagination {
   text-align: center;
 }
-/* line 246, ../../_sass/style.scss */
+/* line 245, ../../_sass/style.scss */
 div.content div.pagination span, div.content div.pagination a {
   display: inline-block;
   padding: 0 10px;
@@ -392,20 +389,16 @@ div.content div.pagination span, div.content div.pagination a {
   vertical-align: middle;
   color: #aaaaaa;
 }
-/* line 254, ../../_sass/style.scss */
+/* line 253, ../../_sass/style.scss */
 div.content div.pagination a {
   font-size: 2em;
 }
-/* line 257, ../../_sass/style.scss */
-div.content div.pagination a:hover {
-  color: #ff0084;
-}
-/* line 261, ../../_sass/style.scss */
+/* line 256, ../../_sass/style.scss */
 div.content div.pagination a.hidden {
   visibility: hidden;
 }
 
-/* line 269, ../../_sass/style.scss */
+/* line 264, ../../_sass/style.scss */
 div.footer {
   padding: 50px 0;
   border-top: 1px solid #fff;
@@ -416,11 +409,11 @@ div.footer {
 }
 
 @media (max-width: 1250px) {
-  /* line 279, ../../_sass/style.scss */
+  /* line 274, ../../_sass/style.scss */
   div.content {
     padding: 60px 0;
   }
-  /* line 282, ../../_sass/style.scss */
+  /* line 277, ../../_sass/style.scss */
   div.content div.info {
     position: static;
     text-align: left;
@@ -429,96 +422,101 @@ div.footer {
     width: auto;
     overflow: hidden;
   }
-  /* line 290, ../../_sass/style.scss */
+  /* line 285, ../../_sass/style.scss */
   div.content div.info div.text {
     float: left;
     width: 200px;
   }
-  /* line 295, ../../_sass/style.scss */
+  /* line 290, ../../_sass/style.scss */
   div.content div.info p.links {
     float: right;
     margin-top: 0;
     text-align: right;
   }
-  /* line 304, ../../_sass/style.scss */
+  /* line 299, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 308, ../../_sass/style.scss */
+  /* line 303, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 1em 1em;
     float: right;
   }
-  /* line 315, ../../_sass/style.scss */
+  /* line 310, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 319, ../../_sass/style.scss */
+  /* line 314, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
 }
 @media (max-width: 767px) {
-  /* line 331, ../../_sass/style.scss */
+  /* line 326, ../../_sass/style.scss */
   body {
     font-size: 16px;
   }
 
-  /* line 335, ../../_sass/style.scss */
+  /* line 330, ../../_sass/style.scss */
   .container {
     width: auto;
     margin: 0;
   }
 
-  /* line 340, ../../_sass/style.scss */
+  /* line 335, ../../_sass/style.scss */
   div.content {
     padding: 30px;
   }
-  /* line 343, ../../_sass/style.scss */
+  /* line 338, ../../_sass/style.scss */
   div.content div.info {
     padding-bottom: 30px;
   }
-  /* line 346, ../../_sass/style.scss */
+  /* line 341, ../../_sass/style.scss */
   div.content div.info div.text {
     float: none;
   }
-  /* line 348, ../../_sass/style.scss */
+  /* line 343, ../../_sass/style.scss */
   div.content div.info div.text p {
     display: none;
   }
-  /* line 351, ../../_sass/style.scss */
+  /* line 346, ../../_sass/style.scss */
   div.content div.info p.links {
     float: none;
     text-align: left;
     margin-top: 15px;
   }
-  /* line 358, ../../_sass/style.scss */
+  /* line 353, ../../_sass/style.scss */
   div.content div.posts {
     padding-bottom: 30px;
   }
-  /* line 362, ../../_sass/style.scss */
+  /* line 357, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 366, ../../_sass/style.scss */
+  /* line 361, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 3em 0;
     width: 4em;
     float: none;
   }
-  /* line 374, ../../_sass/style.scss */
+  /* line 369, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 378, ../../_sass/style.scss */
+  /* line 373, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
 
-  /* line 388, ../../_sass/style.scss */
+  /* line 383, ../../_sass/style.scss */
   div.footer {
     padding: 20px 0;
   }
+}
+/* Bootstrap overriding */
+/* line 390, ../../_sass/style.scss */
+.tooltip {
+  font-family: 'Ubuntu', sans-serif;
 }

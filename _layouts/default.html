@@ -4,12 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>{{ page.title }} | {{ site.name }}</title>
+
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic|Droid+Serif:400,700,400italic,700italic|Source+Code+Pro:200,300,400,500,600,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/fonts/metrize_icons/style.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/stylesheets/bootstrap.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/stylesheets/style.css">
+
     <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.ico" />
+
+    <script src="{{ site.baseurl}}/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="{{ site.baseurl}}/assets/javascripts/bootstrap.js"></script>
     <script src="{{ site.baseurl}}/assets/javascripts/app.js"></script>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </head>
@@ -22,13 +29,13 @@
             <p>Humble semi-technical blog of Phat Wangrungarun</p>
           </div>
           <p class="links">
-            <a href="http://www.phatograh.com" target="_blank"><i class="icon-heart"></i></a>
+            <a href="http://www.phatograh.com" target="_blank"><i class="icon-star"></i></a>
             <a href="{{ site.baseurl }}/archives"><i class="icon-list-square"></i></a>
             <a href="http://twitter.com/phatograh" target="_blank"><i class="icon-social-twitter"></i></a>
             <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
             <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
-            <a><i class="icon-social-skype" title="phatograph"></i></a>
-            <a href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+            <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
           </p>
           <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
         </div>

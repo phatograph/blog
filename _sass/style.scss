@@ -30,7 +30,7 @@ body {
         text-decoration: none;
 
         &:hover {
-            color: $main-color-pink-hover;
+            color: $main-color-pink-hover !important;
         }
     }
 
@@ -64,13 +64,9 @@ div.content {
 
             &:hover {
                 color: $main-color;
-
-                i.icon-heart {
-                    color: $main-color-pink-hover;
-                }
             }
 
-            i.icon-heart {
+            i.icon-star {
                 color: $main-color-pink;
             }
         }
@@ -95,6 +91,12 @@ div.content {
             &.links {
                 line-height: 1.2;
                 font-size: 1.5em;
+
+                a {
+                    &:hover {
+                        color: $main-color !important;
+                    }
+                }
             }
         }
     }
@@ -121,6 +123,7 @@ div.content {
             a.history {
                 float: right;
                 margin: 0 0 1em 1em;
+                color: $main-color-light;
 
                 i {
                     font-size: 2em;
@@ -136,10 +139,6 @@ div.content {
 
                 a {
                     color: $main-color-light;
-
-                    &:hover {
-                        color: $main-color-pink-hover;
-                    }
                 }
             }
 
@@ -253,10 +252,6 @@ div.content {
 
         a {
             font-size: 2em;
-
-            &:hover {
-                color: $main-color-pink-hover;
-            }
 
             &.hidden {
                 visibility: hidden;
@@ -388,4 +383,10 @@ div.footer {
     div.footer {
         padding: 20px 0;
     }
+}
+
+/* Bootstrap overriding */
+
+.tooltip {
+    font-family: 'Ubuntu', sans-serif;
 }

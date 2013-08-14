@@ -4,7 +4,7 @@ layout: default
 
 <div class="posts">
   <div class="post">
-    <a href="{{ page.id | gh_history_link }}" target="_blank" class="history"><i class="icon-mailbox"></i></a>
+    <a href="{{ page.id | gh_history_link }}" target="_blank" class="history" title="View post history" data-toggle="tooltip"><i class="icon-mailbox"></i></a>
     <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ page.title }}</a></h3>
     <p class="date">
       {{ page.date | date_to_long_string }}
