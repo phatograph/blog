@@ -4,7 +4,7 @@ title: "My (Old) Summaries on my Resume"
 categories:
 ---
 
-After I [looked back](/post/2013/05/09/a-look-back-at-my-skills/) at my skills,
+After I [looked back]({% post_url 2013-05-09-a-look-back-at-my-skills %}) at my skills,
 I decided to rewrite my summary on my resume. I read it and had a feeling that
 it seemes like a new-grad essay, very innocent. Here is what it was:
 

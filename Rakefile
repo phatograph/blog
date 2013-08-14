@@ -3,7 +3,7 @@ task :default do
   pids = [
     spawn("compass watch _sass"),
     spawn("coffee -b -w -o assets/javascripts -c _coffee/*.coffee"),
-    spawn("jekyll serve --watch")
+    spawn("jekyll serve --watch --baseurl ''")
   ]
 
   trap "INT" do
@@ -27,21 +27,24 @@ end
 
 desc "Default deploy task"
 task :deploy do
-  Rake::Task[:generate].execute
-
   deploy_dir = '_site'
   deploy_branch = 'gh-pages'
 
+  rm_rf deploy_dir
+  Rake::Task[:generate].execute
+
   cd "#{deploy_dir}" do
+    system "git init"
     system "git add ."
     system "git add -u"
+    system "git remote add origin git@github.com:phatograph/blog.git"
 
     puts "\n## Commiting: Site updated at #{Time.now.utc}"
 
     message = "Site updated at #{Time.now.utc}"
     system "git commit -m \"#{message}\""
     puts "\n## Pushing generated #{deploy_dir} website"
-    system "git push origin #{deploy_branch} --force"
+    system "git push origin master:#{deploy_branch} --force"
     puts "\n## Github Pages deploy complete"
   end
 end

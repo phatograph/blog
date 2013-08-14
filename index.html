@@ -6,7 +6,7 @@ title: Home
 <div class="posts">
   {% for post in paginator.posts %}
     <div class="post">
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
       <p class="date">
         {{ post.date | date_to_long_string }}
         {% capture tag_length %}{{ post.tags | size }}{% endcapture %}
@@ -26,17 +26,17 @@ title: Home
 <div class="pagination">
   {% if paginator.previous_page %}
     {% if paginator.previous_page == 1 %}
-      <a href="/" class="previous"><i class="icon-arrow-left"></i></a>
+      <a href="{{ site.baseurl}}" class="previous"><i class="icon-arrow-left"></i></a>
     {% else %}
-      <a href="/page/{{ paginator.previous_page }}" class="previous"><i class="icon-arrow-left"></i></a>
+      <a href="{{ site.baseurl }}/page/{{ paginator.previous_page }}" class="previous"><i class="icon-arrow-left"></i></a>
     {% endif %}
   {% else %}
-    <a href="/" class="hidden"><i class="icon-arrow-left"></i></a>
+    <a href="{{ site.baseurl }}" class="hidden"><i class="icon-arrow-left"></i></a>
   {% endif %}
   <span class="page_number ">{{ paginator.page }} / {{ paginator.total_pages }}</span>
   {% if paginator.next_page %}
-    <a href="/page/{{ paginator.next_page }}" class="next"><i class="icon-arrow-right"></i></a>
+    <a href="{{ site.baseurl }}/page/{{ paginator.next_page }}" class="next"><i class="icon-arrow-right"></i></a>
   {% else %}
-    <a href="/" class="hidden"><i class="icon-arrow-right"></i></a>
+    <a href="{{ site.baseurl }}/" class="hidden"><i class="icon-arrow-right"></i></a>
   {% endif %}
 </div>

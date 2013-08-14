@@ -20,7 +20,7 @@ title: Archives
             </a>
           </div>
         {% endunless %}
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
       <p class="date">
         {{ post.date | date_to_long_string }}
         {% capture tag_length %}{{ post.tags | size }}{% endcapture %}
