@@ -9,6 +9,14 @@ $main-color-syntax: #f1f1f1;
 $main-color-pink: #ea4c89;
 $main-color-pink-hover: #ff0084;
 
+@viewport {
+    width: device-width;
+}
+
+@-ms-viewport{
+    width: device-width;
+}
+
 body {
     line-height: 1.5;
     color: $main-color;
@@ -256,6 +264,54 @@ div.footer {
     font-size: 0.75em;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
+}
+
+@media (max-width: 1250px) {
+    div.content {
+        padding: 60px 0;
+
+        div.info {
+            position: static;
+            text-align: left;
+            padding-bottom: 60px;
+            left: 0;
+            width: auto;
+            overflow: hidden;
+
+            div.text {
+                float: left;
+                width: 170px;
+            }
+
+            p.links {
+                float: right;
+                text-align: right;
+                margin-top: 0;
+            }
+        }
+
+        div.posts {
+            div.post {
+                div.archive-date {
+                    position: static;
+                    float: right;
+                    margin: 0 0 10px 10px;
+
+                    a {
+                        p {
+                            &.year {
+                                font-size: 0.7em;
+                            }
+
+                            &.month {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
