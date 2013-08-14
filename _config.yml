@@ -1,4 +1,6 @@
 name: phato.blog
+# baseurl: /blog
+# destination: ./_site/blog
 markdown: redcarpet
 pygments: true
 permalink: /post/:year/:month/:day/:title
