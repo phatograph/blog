@@ -283,16 +283,20 @@ div.content div.posts div.post div.body p a, div.content div.posts div.post div.
   text-decoration: underline;
 }
 /* line 158, ../../_sass/style.scss */
-div.content div.posts div.post div.body h3 {
+div.content div.posts div.post div.body strong {
   font-weight: bold;
 }
 /* line 162, ../../_sass/style.scss */
+div.content div.posts div.post div.body h3 {
+  font-weight: bold;
+}
+/* line 166, ../../_sass/style.scss */
 div.content div.posts div.post div.body blockquote {
   border-left: 5px solid #f1f1f1;
   padding: 1em 2em;
   font-style: italic;
 }
-/* line 168, ../../_sass/style.scss */
+/* line 172, ../../_sass/style.scss */
 div.content div.posts div.post div.body div.highlight {
   font-family: 'Source Code Pro', sans-serif;
   overflow-x: auto;
@@ -300,13 +304,13 @@ div.content div.posts div.post div.body div.highlight {
   font-size: 13px;
   background: #f1f1f1;
 }
-/* line 176, ../../_sass/style.scss */
+/* line 180, ../../_sass/style.scss */
 div.content div.posts div.post div.body ul {
   list-style-type: disc;
   padding-left: 3em;
 }
-/* line 182, ../../_sass/style.scss */
-div.content div.posts div.post div.body p > code {
+/* line 186, ../../_sass/style.scss */
+div.content div.posts div.post div.body p > code, div.content div.posts div.post div.body h3 > code {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -317,8 +321,8 @@ div.content div.posts div.post div.body p > code {
   background: #f1f1f1;
   word-wrap: break-word;
 }
-/* line 190, ../../_sass/style.scss */
-div.content div.posts div.post div.body p > img {
+/* line 194, ../../_sass/style.scss */
+div.content div.posts div.post div.body p > img, div.content div.posts div.post div.body h3 > img {
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   -ms-border-radius: 0.3em;
@@ -335,23 +339,23 @@ div.content div.posts div.post div.body p > img {
   margin: 0 auto;
   display: block;
 }
-/* line 201, ../../_sass/style.scss */
+/* line 205, ../../_sass/style.scss */
 div.content div.posts div.post div.body h3 {
   font-size: 1.5em;
 }
-/* line 205, ../../_sass/style.scss */
+/* line 209, ../../_sass/style.scss */
 div.content div.posts div.post div.body .twitter-tweet {
   margin-top: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-/* line 212, ../../_sass/style.scss */
+/* line 216, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date {
   position: absolute;
   left: 770px;
   font-family: 'Source Code Pro', sans-serif;
 }
-/* line 217, ../../_sass/style.scss */
+/* line 221, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -359,29 +363,29 @@ div.content div.posts div.post div.archive-date a {
   padding: 1em;
   background: #ea4c89;
 }
-/* line 223, ../../_sass/style.scss */
+/* line 227, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 225, ../../_sass/style.scss */
+/* line 229, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p {
   color: #fff;
   line-height: 1;
 }
-/* line 229, ../../_sass/style.scss */
+/* line 233, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.year {
   font-size: 1em;
 }
-/* line 233, ../../_sass/style.scss */
+/* line 237, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.month {
   font-size: 2em;
 }
-/* line 242, ../../_sass/style.scss */
+/* line 246, ../../_sass/style.scss */
 div.content div.pagination {
   text-align: center;
 }
-/* line 245, ../../_sass/style.scss */
+/* line 249, ../../_sass/style.scss */
 div.content div.pagination span, div.content div.pagination a {
   display: inline-block;
   padding: 0 10px;
@@ -389,16 +393,16 @@ div.content div.pagination span, div.content div.pagination a {
   vertical-align: middle;
   color: #aaaaaa;
 }
-/* line 253, ../../_sass/style.scss */
+/* line 257, ../../_sass/style.scss */
 div.content div.pagination a {
   font-size: 2em;
 }
-/* line 256, ../../_sass/style.scss */
+/* line 260, ../../_sass/style.scss */
 div.content div.pagination a.hidden {
   visibility: hidden;
 }
 
-/* line 264, ../../_sass/style.scss */
+/* line 268, ../../_sass/style.scss */
 div.footer {
   padding: 50px 0;
   border-top: 1px solid #fff;
@@ -409,11 +413,11 @@ div.footer {
 }
 
 @media (max-width: 1250px) {
-  /* line 274, ../../_sass/style.scss */
+  /* line 278, ../../_sass/style.scss */
   div.content {
     padding: 60px 0;
   }
-  /* line 277, ../../_sass/style.scss */
+  /* line 281, ../../_sass/style.scss */
   div.content div.info {
     position: static;
     text-align: left;
@@ -422,101 +426,101 @@ div.footer {
     width: auto;
     overflow: hidden;
   }
-  /* line 285, ../../_sass/style.scss */
+  /* line 289, ../../_sass/style.scss */
   div.content div.info div.text {
     float: left;
     width: 200px;
   }
-  /* line 290, ../../_sass/style.scss */
+  /* line 294, ../../_sass/style.scss */
   div.content div.info p.links {
     float: right;
     margin-top: 0;
     text-align: right;
   }
-  /* line 299, ../../_sass/style.scss */
+  /* line 303, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 303, ../../_sass/style.scss */
+  /* line 307, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 1em 1em;
     float: right;
   }
-  /* line 310, ../../_sass/style.scss */
+  /* line 314, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 314, ../../_sass/style.scss */
+  /* line 318, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
 }
 @media (max-width: 767px) {
-  /* line 326, ../../_sass/style.scss */
+  /* line 330, ../../_sass/style.scss */
   body {
     font-size: 16px;
   }
 
-  /* line 330, ../../_sass/style.scss */
+  /* line 334, ../../_sass/style.scss */
   .container {
     width: auto;
     margin: 0;
   }
 
-  /* line 335, ../../_sass/style.scss */
+  /* line 339, ../../_sass/style.scss */
   div.content {
     padding: 30px;
   }
-  /* line 338, ../../_sass/style.scss */
+  /* line 342, ../../_sass/style.scss */
   div.content div.info {
     padding-bottom: 30px;
   }
-  /* line 341, ../../_sass/style.scss */
+  /* line 345, ../../_sass/style.scss */
   div.content div.info div.text {
     float: none;
   }
-  /* line 343, ../../_sass/style.scss */
+  /* line 347, ../../_sass/style.scss */
   div.content div.info div.text p {
     display: none;
   }
-  /* line 346, ../../_sass/style.scss */
+  /* line 350, ../../_sass/style.scss */
   div.content div.info p.links {
     float: none;
     text-align: left;
     margin-top: 15px;
   }
-  /* line 353, ../../_sass/style.scss */
+  /* line 357, ../../_sass/style.scss */
   div.content div.posts {
     padding-bottom: 30px;
   }
-  /* line 357, ../../_sass/style.scss */
+  /* line 361, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 361, ../../_sass/style.scss */
+  /* line 365, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 3em 0;
     width: 4em;
     float: none;
   }
-  /* line 369, ../../_sass/style.scss */
+  /* line 373, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 373, ../../_sass/style.scss */
+  /* line 377, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
 
-  /* line 383, ../../_sass/style.scss */
+  /* line 387, ../../_sass/style.scss */
   div.footer {
     padding: 20px 0;
   }
 }
 /* Bootstrap overriding */
-/* line 390, ../../_sass/style.scss */
+/* line 394, ../../_sass/style.scss */
 .tooltip {
   font-family: 'Ubuntu', sans-serif;
 }
