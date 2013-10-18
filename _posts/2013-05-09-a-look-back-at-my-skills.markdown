@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "A Look Back at my Skills"
-categories:
 ---
 
 Well, I intended to write this post just about editors I have been using
