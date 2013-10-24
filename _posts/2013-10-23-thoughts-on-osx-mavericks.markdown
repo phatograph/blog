@@ -26,6 +26,8 @@ to movements. Not sure I like this but should get used to it in no time.
 
 - Thai font has become more crisp.
 
+- Auto '' substitute with ‘’ and "" with “”
+
 - My favourite one, quick preview image (by tapping space) is zoomable now.
 
 Just several reasons here could make me love this newly release.
