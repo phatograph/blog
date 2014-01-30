@@ -1,0 +1,651 @@
+---
+layout: default
+title: Cheats
+---
+
+<!-- Template -->
+<!-- <div class="entry"> -->
+<!-- <p></p> -->
+<!-- {% highlight bash %} -->
+<!-- {% endhighlight %} -->
+<!-- </div> -->
+
+<div class="cheats">
+
+<div class="block">
+<h3>Rails</h3>
+
+<div class="entry">
+<p>Generate specs</p>
+{% highlight bash %}
+rails generate rspec:controller [NAME]
+rails generate rspec:model [NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Show rake tasks</p>
+{% highlight bash %}
+rake -T
+rake -P | grep rake
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Run tests</p>
+{% highlight bash %}
+rake spec
+bundle exec rspec
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Kill all ruby processes</p>
+{% highlight bash %}
+kill -9 `pgrep ruby`
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Include Url Helpers to Rails console</p>
+{% highlight bash %}
+include Rails.application.routes.url_helpers
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Opens a bundled gem in the editor</p>
+{% highlight bash %}
+export BUNDLER_EDITOR=subl && bundle open cancan
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Check production state</p>
+{% highlight bash %}
+if Rails.env.production?
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Respond to formats</p>
+{% highlight ruby %}
+respond_to do |format|
+  format.html
+  format.json { render json: @apps.to_json }
+end
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Generate views with Bootstrap</p>
+{% highlight bash %}
+# rails generate bootstrap:themed CONTROLLER_PATH [MODEL_NAME]
+rails g bootstrap:themed admin/items item
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>UTF-8 for seeds.rb</p>
+{% highlight bash %}
+# Just add the following line as the first line of your seeds.rb
+# -*- coding: utf-8 -*-
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Rollback multiple migrations</p>
+{% highlight bash %}
+rake db:rollback STEP=2
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Generate referenced model</p>
+{% highlight bash %}
+rails generate model Comment body:text post:references
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Truncates all *.log files in log/ to zero bytes</p>
+{% highlight bash %}
+rake log:clear
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Run rails in production using webrick</p>
+{% highlight bash %}
+rails s --environment=production
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Migrate production database</p>
+{% highlight bash %}
+rake db:migrate RAILS_ENV="production"
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Clone development db to test db</p>
+{% highlight bash %}
+rake db:test:clone
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Setup deployment to a VPS</p>
+{% highlight bash %}
+cap deploy:setup
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Local precompile assets</p>
+{% highlight bash %}
+rake assets:precompile RAILS_ENV=development
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Source location</p>
+{% highlight bash %}
+>> Project.instance_method(:trash).source_location
+=> ["/Users/qrush/37s/apps/bcx/app/models/project.rb", 90]
+
+>> app.method(:get).source_location
+=> ["/Users/qrush/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/bundler/gems/rails-7d95b814583b/actionpack/lib/action_dispatch/testing/integration.rb", 32]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Helper in a console</p>
+{% highlight bash %}
+>> helper.link_to "Home", app.root_path
+=> "<a href=\"/\">Home</a>"
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Random Rspec stuffs</p>
+{% highlight ruby %}
+# https://github.com/oozou/addresstalk/pull/300#discussion_r3389770
+# have_selector works only on :href
+
+# https://github.com/oozou/addresstalk/pull/326#discussion_r3932704
+have_field field, :with => title
+
+expect(html).to have_selector 'div#share-community div.modal-header',
+  :text => community.name
+
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3><a href="{{ site.baserl }}/tag/vim">Vim</a></h3>
+
+<div class="entry">
+<p>Replace among opened buffers</p>
+{% highlight bash %}
+:bufdo %s/pattern/replace/ge | update
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Magic modes</p>
+{% highlight bash %}
+/    # Magic, default, e.g. need to use \+
+/\v  # Very magic, no need to use \+
+/\M  # Nomagic, need to use \. and \*
+/\V  # Very Nomagic, like Nomagic but also need to use \$
+     # http://andrewradev.com/2011/05/08/vim-regexes/
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Tabs to spcaes</p>
+{% highlight bash %}
+:retab
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>OSX</h3>
+
+<div class="entry">
+<p>Open Characters</p>
+{% highlight bash %}
+option + command + T
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Copy the SSH key to your clipboard</p>
+{% highlight bash %}
+pbcopy < ~/.ssh/id_rsa.pub
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Go2Shell configurations</p>
+{% highlight bash %}
+open -a Go2Shell --args config
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>[youtube-dl] list all available formats</p>
+{% highlight bash %}
+youtube-dl -F [YOUTUBE_URL]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>[youtube-dl] download selected format video</p>
+{% highlight bash %}
+youtube-dl -f [NUMBER] [YOUTUBE_URL]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Using ImageMagick to make sharp web-sized photographs</p>
+{% highlight bash %}
+ls *.jpg|while read i;do gm convert $i -resize "900x" -unsharp 2x0.5+0.5+0 -quality 98 `basename $i .jpg`_s.jpg;done
+
+# Note: To use imagemagick rather than graphicsmagick, just remove the "gm"
+# https://even.li/imagemagick-sharp-web-sized-photographs/
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Find and delete</p>
+{% highlight bash %}
+find *.png -delete
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Find recursively and delete</p>
+{% highlight bash %}
+find **/*.orig -exec rm {} \;
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Generate ssh key</p>
+{% highlight bash %}
+ssh-keygen -t rsa -C "phatograph@gmail.com"
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Add ssh key</p>
+{% highlight bash %}
+ssh-add ~/.ssh/id_rsa
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Delete all ssh keys</p>
+{% highlight bash %}
+ssh-add -D
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>List saved ssh keys</p>
+{% highlight bash %}
+ssh-add -l
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Create a bootable USB of OSX Maverick</p>
+{% highlight bash %}
+sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/UNTITLED --applicationpath /Applications/Install\ OS\ X\ Mavericks.app
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Node.js</h3>
+
+<div class="entry">
+<p>Specifying a version of Node.js or npm</p>
+{% highlight js %}
+{
+  "name": "myapp",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  }
+}
+
+// https://devcenter.heroku.com/articles/nodejs-versions
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Setting NODE_ENV on Heroku</p>
+{% highlight bash %}
+heroku config:add NODE_ENV=production
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>PostgreSQL</h3>
+
+<div class="entry">
+<p>Display information about current connection</p>
+{% highlight bash %}
+\conninfo
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>List all tables</p>
+{% highlight bash %}
+\d
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Use/connect to a database</p>
+{% highlight bash %}
+\c [DATABASE_NAME]
+psql [DATABASE_NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>SQL Dump</p>
+{% highlight bash %}
+pg_dump [DATABASE_NAME] > [OUTPUT_FILE_NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restoring the dump</p>
+{% highlight bash %}
+psql [DATABASE_NAME] < [INPUT_FILE_NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Describe table</p>
+{% highlight bash %}
+\d [TABLE_NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>List all databases</p>
+{% highlight bash %}
+\list
+psql -l
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Generate new uncompressed data-only backup (Heroku dump -> mysql)</p>
+{% highlight bash %}
+pg_dump --data-only --column-inserts --format p -f [BACKUP_NAME.sql] [POSTGRES_DB_NAME]
+# then use http://www.lightbox.ca/pg2mysql.php
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Start PostgreSQL installed from homebrew</p>
+{% highlight bash %}
+postgres -D /usr/local/var/postgres
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Import dumped psql in local machine</p>
+{% highlight bash %}
+pg_restore -O -d [APP_DATABASE_NAME] [DUMPED_FILE_NAME]
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Heroku</h3>
+
+<div class="entry">
+<p>Migrate database</p>
+{% highlight bash %}
+heroku run rake db:migrate
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restoring the dump</p>
+{% highlight bash %}
+heroku pgbackups:restore SHARED_DATABASE '[RAW_GIST_FILE_URL]'
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>List all backups</p>
+{% highlight bash %}
+heroku pgbackups
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Create a publicly accessible URL for a backup</p>
+{% highlight bash %}
+heroku pgbackups:url [BACKUP_ID]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Database information</p>
+{% highlight bash %}
+heroku pg:info
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Open addons console</p>
+{% highlight bash %}
+heroku addons:open [ADDON_NAME]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Heroku PG local/prod restoration</p>
+{% highlight bash %}
+curl -o tmp/latest.dump `heroku pgbackups:url --app addresstalk`
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -d addresstalk_development tmp/latest.dump
+heroku pgbackups:restore DATABASE --app addresstalk-staging `heroku pgbackups:url --app addresstalk`
+
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Sublime Text 2</h3>
+
+<div class="entry">
+<p>Reopen closed tabs</p>
+{% highlight bash %}
+Shift + Cmd + T
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Using Package Control</p>
+{% highlight bash %}
+Shift + Cmd + P > install
+# Package Control: Install Package
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Installing Package Control</p>
+{% highlight bash %}
+# Control + `
+
+import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+
+# restart & browse to Preferences -> Package Settings
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Add an additional cursor at all occurrences</p>
+{% highlight bash %}
+Ctrl + Command + G
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Git</h3>
+
+<div class="entry">
+<p>Rebase with interactive</p>
+{% highlight bash %}
+git rebase -i HEAD^
+git rebase -i HEAD~5
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Deleting remote branch</p>
+{% highlight bash %}
+git push origin :newfeature
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Remove both untracked and ignored files</p>
+{% highlight bash %}
+git ls-files --other | xargs rm -f
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Removing ignored files </p>
+{% highlight bash %}
+git ls-files --ignored --exclude-standard --other | xargs rm -f
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Remove untracked files </p>
+{% highlight bash %}
+git ls-files --exclude-standard --other | xargs rm -f
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Push to a different branch</p>
+{% highlight bash %}
+git push heroku expressjs:master
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Ubuntu</h3>
+
+<div class="entry">
+<p>Install firewall</p>
+{% highlight bash %}
+sudo apt-get install ufw
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restart Nginx</p>
+{% highlight bash %}
+sudo service nginx restart
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restart php-fpm</p>
+{% highlight bash %}
+sudo service php5-fpm restart
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Vim Nginx default configuration</p>
+{% highlight bash %}
+sudo vim /etc/nginx/sites-available/default
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Place the public key on the virtual server</p>
+{% highlight bash %}
+cat .ssh/id_rsa.pub | ssh user@123.45.56.78 "cat >> ~/.ssh/authorized_keys"
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restart machine</p>
+{% highlight bash %}
+sudo shutdown -r now
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Restart PostgreSQL</p>
+{% highlight bash %}
+/etc/init.d/postgresql restart
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Redis</h3>
+
+<div class="entry">
+<p>Delete keys matching a pattern</p>
+{% highlight bash %}
+redis-cli KEYS "prefix:*" | xargs redis-cli DEL
+{% endhighlight %}
+</div>
+</div>
+
+<div class="block">
+<h3>Laravel</h3>
+
+<div class="entry">
+<p>Generate the Application Key</p>
+{% highlight bash %}
+php artisan key:generate
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Generate a migration</p>
+{% highlight bash %}
+php artisan migrate:make [MIGRATION_NAME_WITH_UNDERSCORE]
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Migrate database</p>
+{% highlight bash %}
+php artisan migrate:install
+php artisan migrate
+php artisan migrate:rollback
+{% endhighlight %}
+</div>
+</div>
+
+
+</div>
