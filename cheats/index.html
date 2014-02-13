@@ -185,8 +185,23 @@ expect(html).to have_selector 'div#share-community div.modal-header',
 
 <div class="entry">
 <p>Clear all resque workers</p>
-{% highlight bash %}
+{% highlight ruby %}
 Resque.workers.each {|w| w.unregister_worker}
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Delete all ElasticSearch index</p>
+{% highlight bash %}
+curl -XDELETE 'http://localhost:9200/'
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Basic ElasticSearch services</p>
+{% highlight bash %}
+http://localhost:9200/_mapping?pretty=1  # get all mapping keys
+http://localhost:9200/slimwiki_development/page/_search?pretty=1  # searching
 {% endhighlight %}
 </div>
 </div>
