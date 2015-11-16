@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'jekyll'
 gem 'rake'
-gem 'sass'
-gem 'coffee-script'
+gem 'compass'
 gem 'jekyll-paginate'
 gem 'redcarpet'

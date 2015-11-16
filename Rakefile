@@ -2,7 +2,6 @@ desc "Compile and run the site"
 task :default do
   pids = [
     spawn("compass watch _sass"),
-    spawn("coffee -b -w -o assets/javascripts -c _coffee/*.coffee"),
     spawn("jekyll serve --watch --baseurl ''")
   ]
 
@@ -19,9 +18,7 @@ end
 desc "Generate jekyll site"
 task :generate do
   puts "## Generating Site with Jekyll"
-
   system("compass compile _sass")
-  system("coffee -b -o assets/javascripts -c _coffee/*.coffee")
   system("jekyll build")
 end
 
