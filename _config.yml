@@ -5,5 +5,5 @@ highlighter: true
 permalink: /post/:year/:month/:day/:title
 paginate: 5
 paginate_path: /page/:num
-gems: [jekyll-paginate]
+gems: [coffee-script, sass, jekyll-paginate, redcarpet]
 exclude: ['Gemfile', 'Rakefile']
