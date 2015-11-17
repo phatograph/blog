@@ -6,4 +6,4 @@ permalink: /post/:year/:month/:day/:title
 paginate: 5
 paginate_path: /page/:num
 gems: [jekyll-paginate, redcarpet]
-exclude: ['Gemfile', 'Rakefile']
+exclude: [vendor, 'Gemfile', 'Rakefile']
