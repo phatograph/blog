@@ -1,9 +1,9 @@
 name: phato.blog
 baseurl: /blog
-markdown: redcarpet
-highlighter: true
+markdown: kramdown
+highlighter: rogue
 permalink: /post/:year/:month/:day/:title
 paginate: 5
 paginate_path: /page/:num
-gems: [jekyll-paginate, redcarpet]
+gems: [jekyll-paginate]
 exclude: [vendor, 'Gemfile', 'Rakefile']
