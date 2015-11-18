@@ -1,5 +1,5 @@
 name: phato.blog
-baseurl: /blog
+baseurl: /
 markdown: kramdown
 highlighter: rogue
 permalink: /post/:year/:month/:day/:title
