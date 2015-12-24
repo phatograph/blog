@@ -65,7 +65,7 @@ module Jekyll
     # Returns string
     #
     def tag_link(tag)
-      "<a class='tag' href='/blog/tag/#{tag.gsub(/\s+/, '-').downcase}/'>#{tag}</a>"
+      "<a class='tag' href='/tag/#{tag.gsub(/\s+/, '-').downcase}/'>#{tag}</a>"
     end
 
     def gh_history_link(id)

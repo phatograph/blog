@@ -1,8 +1,14 @@
-name: phato.blog
-markdown: kramdown
-highlighter: rogue
+title: phato.blog
+email: phatograph@gmail.com
+description: >
+  A humble semi-technical blog of Phat Wangrungarun.
+baseurl: ""
+url: "http://blog.phatograph.com"
 permalink: /post/:year/:month/:day/:title
+
+markdown: kramdown
+
+gems: [jekyll-paginate]
 paginate: 5
 paginate_path: /page/:num
-gems: [jekyll-paginate]
 exclude: [vendor, 'Gemfile', 'Rakefile']
