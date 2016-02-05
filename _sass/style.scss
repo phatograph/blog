@@ -44,7 +44,10 @@ body {
   width: 700px;
   margin: 0 auto;
   position: relative;
-  padding-left: 100px;
+
+  @media (min-width: 1250px + 1px) {
+    padding-left: 100px;
+  }
 }
 
 div.content {
@@ -264,6 +267,10 @@ div.content {
       &.hidden {
         visibility: hidden;
       }
+    }
+
+    @media (min-width: 1250px + 1px) {
+      padding-right: 100px;
     }
   }
 
