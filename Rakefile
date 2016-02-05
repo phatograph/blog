@@ -24,6 +24,8 @@ end
 
 desc "Default deploy task"
 task :deploy do
+  system("git push")
+
   deploy_dir = '_site'
   deploy_branch = 'gh-pages'
 
