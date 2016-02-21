@@ -37,6 +37,10 @@ body {
   h1, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
   }
+
+  em {
+    font-style: italic;
+  }
 }
 
 
@@ -132,12 +136,13 @@ div.content {
       > h4 { font-size: 1.5em; }
 
       a.history {
-        float: right;
-        margin: 0 0 1em 1em;
+        position: absolute;
+        right: -3em;
+        top: 0;
         color: $main-color-light;
 
         i {
-          font-size: 2em;
+          font-size: 40px;
           line-height: 1em;
         }
       }
@@ -217,6 +222,20 @@ div.content {
           margin-top: 0 !important;
           margin-left: auto !important;
           margin-right: auto !important;
+        }
+
+        p {
+          &.image-c {
+            text-align: center;
+          }
+
+          span {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            font-style: italic;
+            color: #aaa;
+          }
         }
       }
 
@@ -321,6 +340,8 @@ div.footer {
   font-size: 0.75em;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+  a { color: $main-color-light; }
+  .container { padding-left: 0; }
 }
 
 @media (max-width: 1250px) {
@@ -330,7 +351,7 @@ div.footer {
     div.info {
       position: static;
       text-align: left;
-      padding-bottom: 60px;
+      padding-bottom: 40px;
       left: 0;
       width: auto;
       overflow: hidden;
@@ -344,10 +365,13 @@ div.footer {
         float: right;
         margin-top: 0;
         text-align: right;
+        padding-top: 0;
       }
     }
 
     div.posts {
+      position: relative;
+
       div.post {
         h3 {
           word-wrap: break-word;
@@ -433,6 +457,11 @@ div.footer {
               }
             }
           }
+        }
+
+        a.history {
+          right: 0;
+          top: -30px + -40px;
         }
       }
     }
