@@ -157,10 +157,13 @@ And thanks to them that solved the Teespring financial problem.
 </p>
 
 From its glorious days in 2014 to its
-down road in late 2015, to me it has been so long. Teeview is the first
-project that made me interact with real users (all over the world!)
-and real companies. It has been an unbelievably outstanding
-experience from which I learned a lot.
+down road in late 2015, to me it has been so long.
+Teeview is the first project that made me interact with real users (all over the world!)
+and real companies. Solving user cases. Negotiating and doing
+some actual businesses. Making
+[some](https://www.shopify.com/blog/14515425-how-to-start-an-online-t-shirt-business-the-ultimate-guide)
+[impact](http://cloudincome.com/make-over-400-week/) out there.
+It has been an unbelievably outstanding experience from which I learned a lot.
 
 <p class="image-c">
   <img src="/assets/images/teeview05.png" style="" />

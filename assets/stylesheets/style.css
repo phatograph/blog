@@ -612,8 +612,15 @@ div.footer .container {
     padding: 20px 0;
   }
 }
+/* line 475, ../../_sass/style.scss */
+#disqus_thread {
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid #eee;
+}
+
 /* Bootstrap overriding */
-/* line 477, ../../_sass/style.scss */
+/* line 483, ../../_sass/style.scss */
 .tooltip {
   font-family: 'Ubuntu', sans-serif;
 }
