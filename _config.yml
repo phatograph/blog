@@ -1,6 +1,6 @@
 title: phato.blog
 email: phatograph@gmail.com
-description: A humble semi-technical blog of Phat Wangrungarun.
+description: A humble semi-technical blog of Pat Wangrungarun.
 baseurl: ""
 url: "http://blog.phatograph.com"
 permalink: /post/:year/:month/:day/:title

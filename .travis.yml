@@ -5,7 +5,7 @@ rvm:
 before_script:
 - git remote set-url origin $REPO.git
 - git config --global user.email "phatograph@gmail.com"
-- git config --global user.name "Phat Wangrungarun (via TravisCI)"
+- git config --global user.name "Pat Wangrungarun (via TravisCI)"
 - echo -n $id_rsa_{00..32} >> ~/.ssh/id_rsa_base64
 - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
