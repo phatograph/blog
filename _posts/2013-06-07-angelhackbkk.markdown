@@ -5,7 +5,7 @@ tags:
 ---
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/u9oyjchsyxpkcpf/2556-06-07_at_4.25.32_PM.png" style="width: 500px" />
+  <img src="/assets/images/ah01.png" style="width: 500px" />
 </p>
 
 I had a chance to attend a first time [AngelHack in Bangkok](http://www.hackathon.io/angelhack39)
@@ -20,7 +20,7 @@ Things then quite went along according to the [schedule](http://www.hackathon.io
 ### The Pitching
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/ri307x4d8dw50et/2556-06-07_at_4.32.27_PM.png" />
+  <img src="/assets/images/ah02.png" />
 </p>
 
 Teams that want to present themselves or need more members had
@@ -56,13 +56,13 @@ a sponsor talk session from a Blackberry guy but I didn't join.
 Too busy on coding.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/b60w3cmj8pc61yu/2556-06-07_at_6.12.52_PM.png" style="width: 500px" />
+  <img src="/assets/images/ah03.png" style="width: 500px" />
 </p>
 
 We worked really hard.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/woxz928mwnc5x5a/2556-06-07_at_6.15.49_PM.png" style="width: 500px" />
+  <img src="/assets/images/ah04.png" style="width: 500px" />
 </p>
 
 ### The Facilities
@@ -74,7 +74,7 @@ to hack). The facilities were awesome, we have 3 rooms available for
 We were coding at the lounge.
 
 <p style="text-align: center;">
-  <img src="https://dl.dropbox.com/s/qmehakdd79qtrew/2556-06-07_at_6.22.30_PM.png" style="width: 500px" />
+  <img src="/assets/images/ah05.png" style="width: 500px" />
 </p>
 
 One thing to note here is if you want to stay over night. Please
