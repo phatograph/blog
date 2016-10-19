@@ -342,6 +342,20 @@ ssh-add -l
 sudo /Applications/Install\ OS\ X\ Mavericks.app/Contents/Resources/createinstallmedia --volume /Volumes/UNTITLED --applicationpath /Applications/Install\ OS\ X\ Mavericks.app
 {% endhighlight %}
 </div>
+
+<div class="entry">
+<p>Fix image rotation</p>
+{% highlight bash %}
+jhead -autorot *.JPG
+{% endhighlight %}
+</div>
+
+<div class="entry">
+<p>Resize and crop images</p>
+{% highlight bash %}
+sips --resampleWidth 1080 *.JPG && sips --cropToHeightWidth 720px 1080px *.JPG
+{% endhighlight %}
+</div>
 </div>
 
 <div class="block">
