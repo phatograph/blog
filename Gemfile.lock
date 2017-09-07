@@ -54,3 +54,6 @@ DEPENDENCIES
   jekyll-paginate
   rake
   rouge
+
+BUNDLED WITH
+   1.15.4
