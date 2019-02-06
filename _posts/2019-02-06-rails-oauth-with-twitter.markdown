@@ -20,14 +20,14 @@ and since I'm working on a Rails application so I just have a go with [Ruby OAut
 
 ### 1. Create a Consumer object
 
-A consumer object will be used to get a request token. According to Ruby OAuth, here's how to do so.
+A Consumer object will be used to get both OAuth token and Access token. To create it, according to Ruby OAuth, here's how to do so.
 
 {% highlight ruby %}
 OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site => "https://api.twitter.com"})
 {% endhighlight%}
 
-And since this object can be reuseable, we can make use of [Or Equals](http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html)
-like this.
+And since this object is reuseable, we can make use of [Or Equals](http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html)
+and put it in a controller like this.
 
 {% highlight ruby %}
 class ApiController < ApplicationController
@@ -43,14 +43,14 @@ private
 end
 {% endhighlight%}
 
-Now that we have a Consumer, we can make a request to get an OAuth token.
+Now that we have a Consumer, we can use it to make a request to get an OAuth token.
 
-### 2. Request for an OAuth token
-
-To get an OAuth token, you'll need to create a Request token using `consumer.get_request_token`.
-You'll also need to supply a callback URL within an object containing `:oauth_callback` as well.
+### 2. Getting a request token
 
 At this point, dont' forget to add the URL to your Twitter app's Callback URL.
+
+To get a request token, you'll to make a request using `consumer.get_request_token`.
+You'll also need to supply a callback URL within an object containing `:oauth_callback` as well.
 
 {% highlight ruby %}
 class ApiController < ApplicationController
@@ -61,11 +61,10 @@ class ApiController < ApplicationController
   def request_token
     _request_token = consumer.get_request_token(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}")
 
-    render json: {
-      "request_token": _request_token.token,
-      "request_secret": _request_token.secret,
-      "request_token_url": _request_token.authorize_url(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}"),
-    }
+    session[:request_token] = _request_token.token,
+    session[:request_secret] = _request_token.secret,
+
+    redirect_to _request_token.authorize_url(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}"),
   end
 
 private
@@ -76,11 +75,7 @@ private
 end
 {% endhighlight%}
 
-A URL to Twitter's authorisation page will be generated from `_request_token.authorize_url` (with the same callback URL).
-You can just redirect a user right away with it. But in my case there is some work to do
-on the front-end too. So just ignore it and also the weird params stuff.
-
-There are also two important values, `_request_token.token` and `_request_token.secret`, they both need to be kept
+There are two important values, `_request_token.token` and `_request_token.secret`, they both need to be kept
 in order to recreate `_request_token` again in another action. So you can store them in Cookie, or session, your call.
 
 Now with a URL generated from `_request_token.authorize_url`, you'll need to navigate a user to this URL, which is Twitter's authorisation page.
@@ -88,7 +83,7 @@ In the page, if they're not already logged in they'll need to fill in their cred
 
 Finally they will be redirected back to your application callback URL, along with some query strings, one of them is `oauth_verifier`.
 
-### 3. Request for an Access token
+### 3. Getting an Access token
 
 Since a user will be landed in another action (in this case, `ApiController#access_token`),
 so access to `_request_token` from `ApiController#request_token` is lost.
@@ -102,15 +97,9 @@ _request_token = OAuth::RequestToken.from_hash(consumer, {
 })
 {% endhighlight%}
 
-Almost there! Now we have the `_request_token` back, and also `oauth_verifier` from Twitter. We can make a request for an Access token.
-
-{% highlight ruby %}
-access_token = _request_token.get_access_token(oauth_verifier: params[:oauth_verifier])
-{% endhighlight%}
-
-And finally, Access token get! You can any further request to Twitter using this token as you like. It's all yours now.
-
-To put it all together, the whole controller would look like this.
+Almost there! Now we have the `_request_token` back, and also `oauth_verifier` from Twitter. We can make a request for an Access token
+using `_request_token.get_access_token`.
+You'll also need to supply an OAuth verifier within an object containing `:oauth_verifier` as well.
 
 {% highlight ruby %}
 class ApiController < ApplicationController
@@ -121,17 +110,16 @@ class ApiController < ApplicationController
   def request_token
     _request_token = consumer.get_request_token(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}")
 
-    render json: {
-      "request_token": _request_token.token,
-      "request_secret": _request_token.secret,
-      "request_token_url": _request_token.authorize_url(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}"),
-    }
+    session[:request_token] = _request_token.token
+    session[:request_secret] = _request_token.secret
+
+    redirect_to _request_token.authorize_url(:oauth_callback => "#{params[:base_url]}#{CALLBACK_URL}"),
   end
 
   def access_token
     _request_token = OAuth::RequestToken.from_hash(consumer, {
-      oauth_token: params[:request_token_token],
-      oauth_token_secret: params[:request_token_secret]
+      oauth_token: session[:request_token],
+      oauth_token_secret: session[:request_secret],
     })
 
     access_token = _request_token.get_access_token(oauth_verifier: params[:oauth_verifier])
@@ -146,3 +134,5 @@ private
   end
 end
 {% endhighlight%}
+
+And finally, Access token get! You can any further request to Twitter using this token as you like. It's all yours now.
