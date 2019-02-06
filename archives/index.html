@@ -6,20 +6,23 @@ title: Archives
 <div class="posts">
   {% for post in site.posts reverse %}
     <div class="post">
-        {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-        {% unless year == this_year %}
-          {% assign year = this_year %}
-        {% endunless %}
-        {% capture this_month %}{{ post.date | date: "%^b" }}{% endcapture %}
-        {% unless month == this_month %}
-          {% assign month = this_month %}
-          <div class="archive-date">
-            <a id="{{ year }}-{{ month | downcase }}" href="#{{ year }}-{{ month | downcase }}">
-              <p class="year">{{ year }}</p>
-              <p class="month">{{ month }}</p>
-            </a>
-          </div>
-        {% endunless %}
+      {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+      {% unless year == this_year %}
+        {% assign year = this_year %}
+        {% assign month = -1 %}
+      {% endunless %}
+
+      {% capture this_month %}{{ post.date | date: "%^b" }}{% endcapture %}
+      {% unless month == this_month %}
+        {% assign month = this_month %}
+        <div class="archive-date">
+          <a id="{{ year }}-{{ month | downcase }}" href="#{{ year }}-{{ month | downcase }}">
+            <p class="year">{{ year }}</p>
+            <p class="month">{{ month }}</p>
+          </a>
+        </div>
+      {% endunless %}
+
       <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
       <p class="date">
         {{ post.date | date_to_long_string }}

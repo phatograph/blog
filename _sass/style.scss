@@ -241,7 +241,7 @@ div.content {
 
       div.archive-date {
         position: absolute;
-        left: 700 + 70px;
+        left: calc(100% + 20px);
         font-family: 'Source Code Pro', sans-serif;
 
         a {
@@ -257,11 +257,12 @@ div.content {
             line-height: 1;
 
             &.year {
-              font-size: 1em;
+              font-size: 1.5em;
             }
 
             &.month {
-              font-size: 2em;
+              margin-top: 2px;
+              font-size: 1em;
             }
           }
         }

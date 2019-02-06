@@ -373,7 +373,7 @@ div.content div.posts div.post div.body p span {
 /* line 242, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date {
   position: absolute;
-  left: 770px;
+  left: calc(100% + 20px);
   font-family: 'Source Code Pro', sans-serif;
 }
 /* line 247, ../../_sass/style.scss */
@@ -396,17 +396,18 @@ div.content div.posts div.post div.archive-date a p {
 }
 /* line 259, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.year {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 /* line 263, ../../_sass/style.scss */
 div.content div.posts div.post div.archive-date a p.month {
-  font-size: 2em;
+  margin-top: 2px;
+  font-size: 1em;
 }
-/* line 272, ../../_sass/style.scss */
+/* line 273, ../../_sass/style.scss */
 div.content div.pagination {
   text-align: center;
 }
-/* line 275, ../../_sass/style.scss */
+/* line 276, ../../_sass/style.scss */
 div.content div.pagination span, div.content div.pagination a {
   display: inline-block;
   padding: 0 10px;
@@ -414,21 +415,21 @@ div.content div.pagination span, div.content div.pagination a {
   vertical-align: middle;
   color: #aaa;
 }
-/* line 283, ../../_sass/style.scss */
+/* line 284, ../../_sass/style.scss */
 div.content div.pagination a {
   font-size: 2em;
 }
-/* line 286, ../../_sass/style.scss */
+/* line 287, ../../_sass/style.scss */
 div.content div.pagination a.hidden {
   visibility: hidden;
 }
 @media (min-width: 1251px) {
-  /* line 272, ../../_sass/style.scss */
+  /* line 273, ../../_sass/style.scss */
   div.content div.pagination {
     padding-right: 100px;
   }
 }
-/* line 296, ../../_sass/style.scss */
+/* line 297, ../../_sass/style.scss */
 div.content .highlight {
   font-family: 'Source Code Pro', sans-serif;
   overflow-x: auto;
@@ -436,22 +437,22 @@ div.content .highlight {
   font-size: 13px;
   background: #f1f1f1;
 }
-/* line 305, ../../_sass/style.scss */
+/* line 306, ../../_sass/style.scss */
 div.content div.cheats div.block {
   padding-bottom: 1em;
 }
-/* line 308, ../../_sass/style.scss */
+/* line 309, ../../_sass/style.scss */
 div.content div.cheats div.block:last-child {
   padding-bottom: 0;
 }
-/* line 312, ../../_sass/style.scss */
+/* line 313, ../../_sass/style.scss */
 div.content div.cheats div.block h3 {
   font-size: 2em;
   font-weight: bold;
   line-height: 1em;
   padding-bottom: 1em;
 }
-/* line 319, ../../_sass/style.scss */
+/* line 320, ../../_sass/style.scss */
 div.content div.cheats div.block div.entry {
   *zoom: 1;
   padding-bottom: 1em;
@@ -462,7 +463,7 @@ div.content div.cheats div.block div.entry:after {
   display: table;
   clear: both;
 }
-/* line 323, ../../_sass/style.scss */
+/* line 324, ../../_sass/style.scss */
 div.content div.cheats div.block div.entry p {
   font-size: 0.9em;
   float: left;
@@ -472,7 +473,7 @@ div.content div.cheats div.block div.entry p {
   line-height: 1.3;
 }
 
-/* line 336, ../../_sass/style.scss */
+/* line 337, ../../_sass/style.scss */
 div.footer {
   padding: 50px 0;
   border-top: 1px solid #fff;
@@ -481,21 +482,21 @@ div.footer {
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
 }
-/* line 343, ../../_sass/style.scss */
+/* line 344, ../../_sass/style.scss */
 div.footer a {
   color: #aaa;
 }
-/* line 344, ../../_sass/style.scss */
+/* line 345, ../../_sass/style.scss */
 div.footer .container {
   padding-left: 0;
 }
 
 @media (max-width: 1250px) {
-  /* line 348, ../../_sass/style.scss */
+  /* line 349, ../../_sass/style.scss */
   div.content {
     padding: 40px 0;
   }
-  /* line 351, ../../_sass/style.scss */
+  /* line 352, ../../_sass/style.scss */
   div.content div.info {
     position: static;
     text-align: left;
@@ -504,115 +505,115 @@ div.footer .container {
     width: auto;
     overflow: hidden;
   }
-  /* line 359, ../../_sass/style.scss */
+  /* line 360, ../../_sass/style.scss */
   div.content div.info div.text {
     float: left;
     width: 200px;
   }
-  /* line 364, ../../_sass/style.scss */
+  /* line 365, ../../_sass/style.scss */
   div.content div.info div.links {
     float: right;
     margin-top: 0;
     text-align: right;
     padding-top: 0;
   }
-  /* line 372, ../../_sass/style.scss */
+  /* line 373, ../../_sass/style.scss */
   div.content div.posts {
     position: relative;
   }
-  /* line 376, ../../_sass/style.scss */
+  /* line 377, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 380, ../../_sass/style.scss */
+  /* line 381, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 1em 1em;
     float: right;
   }
-  /* line 387, ../../_sass/style.scss */
+  /* line 388, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 391, ../../_sass/style.scss */
+  /* line 392, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
 }
 @media (max-width: 767px) {
-  /* line 403, ../../_sass/style.scss */
+  /* line 404, ../../_sass/style.scss */
   body {
     font-size: 16px;
   }
 
-  /* line 407, ../../_sass/style.scss */
+  /* line 408, ../../_sass/style.scss */
   .container {
     width: auto;
     margin: 0;
   }
 
-  /* line 412, ../../_sass/style.scss */
+  /* line 413, ../../_sass/style.scss */
   div.content {
     padding: 30px;
   }
-  /* line 415, ../../_sass/style.scss */
+  /* line 416, ../../_sass/style.scss */
   div.content div.info {
     padding-bottom: 30px;
   }
-  /* line 418, ../../_sass/style.scss */
+  /* line 419, ../../_sass/style.scss */
   div.content div.info div.text {
     float: none;
   }
-  /* line 420, ../../_sass/style.scss */
+  /* line 421, ../../_sass/style.scss */
   div.content div.info div.text p {
     display: none;
   }
-  /* line 423, ../../_sass/style.scss */
+  /* line 424, ../../_sass/style.scss */
   div.content div.info div.links {
     float: none;
     text-align: left;
     margin-top: 0;
     padding-top: 0;
   }
-  /* line 429, ../../_sass/style.scss */
+  /* line 430, ../../_sass/style.scss */
   div.content div.info div.links p.travis {
     padding-top: 10px;
   }
-  /* line 435, ../../_sass/style.scss */
+  /* line 436, ../../_sass/style.scss */
   div.content div.posts {
     padding-bottom: 30px;
   }
-  /* line 439, ../../_sass/style.scss */
+  /* line 440, ../../_sass/style.scss */
   div.content div.posts div.post h3 {
     word-wrap: break-word;
   }
-  /* line 443, ../../_sass/style.scss */
+  /* line 444, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date {
     position: static;
     margin: 0 0 3em 0;
     width: 4em;
     float: none;
   }
-  /* line 451, ../../_sass/style.scss */
+  /* line 452, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.year {
     font-size: 0.7em;
   }
-  /* line 455, ../../_sass/style.scss */
+  /* line 456, ../../_sass/style.scss */
   div.content div.posts div.post div.archive-date a p.month {
     font-size: 1em;
   }
-  /* line 462, ../../_sass/style.scss */
+  /* line 463, ../../_sass/style.scss */
   div.content div.posts div.post a.history {
     right: 0;
     top: -70px;
   }
 
-  /* line 470, ../../_sass/style.scss */
+  /* line 471, ../../_sass/style.scss */
   div.footer {
     padding: 20px 0;
   }
 }
-/* line 475, ../../_sass/style.scss */
+/* line 476, ../../_sass/style.scss */
 #disqus_thread {
   margin-top: 50px;
   padding-top: 50px;
@@ -620,7 +621,7 @@ div.footer .container {
 }
 
 /* Bootstrap overriding */
-/* line 483, ../../_sass/style.scss */
+/* line 484, ../../_sass/style.scss */
 .tooltip {
   font-family: 'Ubuntu', sans-serif;
 }
