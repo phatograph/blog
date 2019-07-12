@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "My (Old) Summaries on my Resume"
+tags:
+- self
 ---
 
 After I [looked back]({% post_url 2013-05-09-a-look-back-at-my-skills %}) at my skills,

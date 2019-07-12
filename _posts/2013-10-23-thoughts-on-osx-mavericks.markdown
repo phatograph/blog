@@ -2,7 +2,7 @@
 layout: post
 title: "Thoughts on OSX Mavericks"
 tags:
-- OSX
+- osx
 ---
 
 Mavericks had been officially released. I installed in the next morning and

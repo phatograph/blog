@@ -2,7 +2,7 @@
 layout: post
 title: "Devise user confirmation testing in development"
 tags:
-- Devise
+- devise
 ---
 
 I want to test Devise's `confirmable` feature in local development, so I need

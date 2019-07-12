@@ -2,7 +2,7 @@
 layout: post
 title: "Installing PostgresSQL on Ubuntu 12.04"
 tags:
-- Ubuntu
+- ubuntu
 ---
 
 I had to find a new home for [Teeview](http://teeview.phatograph.com)

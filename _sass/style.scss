@@ -94,6 +94,10 @@ div.content {
       color: $main-color-light;
       margin-top: 0;
 
+      @media (max-width: 767px) {
+        font-size: 1em;
+      }
+
       a {
         &:hover {
           color: $main-color !important;
@@ -128,7 +132,7 @@ div.content {
 
       > h3, h4 {
         font-weight: bold;
-        line-height: 1em;
+        line-height: 1.15;
         padding-bottom: 0.3em;
       }
 
@@ -148,19 +152,29 @@ div.content {
       }
 
       p.date {
-        line-height: 1;
         margin-bottom: 1.25em;
         color: $main-color-light;
         // font-size: 0.75em;
 
         a {
           color: $main-color-light;
+          text-decoration: underline;
         }
       }
 
       div.body {
-        p, .highlight, ul, h3, blockquote, .twitter-tweet {
+        p,
+        .highlight,
+        ul,
+        h3,
+        blockquote,
+        > pre,
+        .twitter-tweet {
           margin-bottom: 30px !important;
+
+          @media (max-width: 767px) {
+            margin-bottom: 20px !important;
+          }
 
           &:last-child {
             margin-bottom: 0 !important;
@@ -169,6 +183,11 @@ div.content {
           a {
             text-decoration: underline;
           }
+        }
+
+        > pre {
+          padding: 0 1.5em 0 1.5em !important;
+          font-size: 14px;
         }
 
         strong {

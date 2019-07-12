@@ -2,7 +2,7 @@
 layout: post
 title: "Lookbehind / Lookahead in Vim"
 tags:
-- Vim
+- vim
 ---
 
 Vim is just powerful, sometimes you might want to replace your code from `something` to `everything` or `someone`.

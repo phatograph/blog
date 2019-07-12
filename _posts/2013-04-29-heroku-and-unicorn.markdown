@@ -2,7 +2,7 @@
 layout: post
 title: "Heroku and Unicorn"
 tags:
-- Heroku
+- heroku
 ---
 
 Yeah that rainbow Unicorn. I want to blog this for a while but I was too lazy.

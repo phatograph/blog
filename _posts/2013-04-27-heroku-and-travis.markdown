@@ -2,8 +2,8 @@
 layout: post
 title: "Heroku and Travis"
 tags:
-- Heroku
-- Travis
+- heroku
+- travis
 ---
 
 The story was this, I would like to have a CI to get my code from GitHub,

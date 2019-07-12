@@ -2,6 +2,7 @@
 layout: post
 title: "Rails OAuth with Twitter"
 tags:
+- rails
 ---
 
 It had been an eternal struggling with me and OAuth since forever.

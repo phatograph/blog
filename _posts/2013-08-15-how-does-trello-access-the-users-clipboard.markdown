@@ -2,7 +2,7 @@
 layout: post
 title: "How does Trello access the user's clipboard ?"
 tags:
-- Javascript
+- javascript
 ---
 
 This is definitely a wise UX way, using user behavior.

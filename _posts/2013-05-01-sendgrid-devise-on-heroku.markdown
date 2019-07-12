@@ -2,8 +2,8 @@
 layout: post
 title: "SendGrid + Devise on Heroku"
 tags:
-- Heroku
-- Devise
+- heroku
+- devise
 ---
 
 Let's say I have a subdomain [devsheet.phatograph.com](http://devsheet.phatograph.com/) and I want to configure __SendGrid__ and __Devise__ in Heroku, here are things to be done.

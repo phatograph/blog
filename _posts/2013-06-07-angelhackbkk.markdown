@@ -2,6 +2,7 @@
 layout: post
 title: "#AngelHackBKK"
 tags:
+- self
 ---
 
 <p style="text-align: center;">

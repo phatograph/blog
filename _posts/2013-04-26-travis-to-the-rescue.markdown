@@ -2,7 +2,7 @@
 layout: post
 title: "Travis to the rescue"
 tags:
-- Travis
+- travis
 ---
 
 One thing I don't like about Octopress it requires too much steps to write a single blog post. You have to:
