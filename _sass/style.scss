@@ -215,10 +215,12 @@ div.content {
         p, h3 {
           > code {
             @include border-radius(3px);
+            display: inline-block;
             font-family: 'Source Code Pro', sans-serif;
-            padding: 0 0.4em;
+            padding: 0 0.3em;
             background: $main-color-syntax;
             word-wrap: break-word;
+            line-height: 1.4;
           }
 
           > img {
