@@ -19,7 +19,7 @@ and select all the text in it, so the selection is all set when the `C` key is h
 
 > Specifically, Trello does this:
 
-{% highlight coffeescript %}
+<pre><code class="language-coffee">
 TrelloClipboard = new class
   constructor: ->
     @value = ""
@@ -55,13 +55,13 @@ TrelloClipboard = new class
         $("#clipboard-container").empty().hide()
 
   set: (@value) ->
-{% endhighlight %}
+</code></pre>
 
 {% highlight html %}
 <div id="clipboard-container"><textarea id="clipboard"></textarea></div>
 {% endhighlight %}
 
-{% highlight css %}
+<pre><code class="language-css">
 /* CSS for the clipboard stuff */
 #clipboard-container {
   position: fixed;
@@ -78,14 +78,15 @@ TrelloClipboard = new class
   height: 1px;
   padding: 0px;
 }
-{% endhighlight %}
+</code></pre>
+
 
 > ... and the CSS makes it so you can't actually see the textarea when it pops in ... but it's "visible" enough to copy from.
 
 > When you hover over a card, it calls
 
-{% highlight js %}
+<pre><code class="language-js">
 TrelloClipboard.set(cardUrl)
-{% endhighlight %}
+</code></pre>
 
 > ... so then the clipboard helper knows what to select when the `Ctrl` key is pressed.

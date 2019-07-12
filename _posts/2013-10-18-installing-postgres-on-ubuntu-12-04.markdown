@@ -12,56 +12,56 @@ to setup PostgreSQL on Ubuntu 12.04. Enjoy!
 
 First, perform a quick update of the apt-get repository.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 $ sudo apt-get update
-{% endhighlight %}
+</code></pre>
 
 Once apt-get has updated go ahead and download Postgres and its
 helpful accompanying dependencies.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 $ sudo apt-get install postgresql postgresql-contrib
-{% endhighlight %}
+</code></pre>
 
 Postgres is installed, now time to set a new password for `postgres` user.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 $ sudo -u postgres psql
 
 > \password postgres  # and type in a new password
 > \q  # to quit postgres console
-{% endhighlight %}
+</code></pre>
 
 Move on to configure postgres.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 $ cd /etc/postgresql/9.1/main
 $ cp pg_hba.conf pg_hba.conf.bak.original  # backup default configuration
 $ cp postgresql.conf postgresql.conf.bak.original
-{% endhighlight %}
+</code></pre>
 
 Enable remote access from any IP address (with password required).
 Add this line to `pg_hba.conf`:
 
-{% highlight bash %}
+<pre><code class="language-bash">
 host  all   all   0.0.0.0/0   md5
-{% endhighlight %}
+</code></pre>
 
 Allow TCP/IP socket. Modify this line in `postgresql.conf`
 
-{% highlight bash %}
+<pre><code class="language-bash">
 listen_addresses='*'
-{% endhighlight %}
+</code></pre>
 
 And restart Postgres after finish configuration.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 /etc/init.d/postgresql restart
-{% endhighlight %}
+</code></pre>
 
 Also make sure you enable a firewall for Postgres.
 
-{% highlight bash %}
+<pre><code class="language-bash">
 $ sudo ufw allow 5432
 $ sudo ufw status
 
@@ -71,7 +71,7 @@ To                         Action      From
 5432                       ALLOW       Anywhere
 5432                       ALLOW       Anywhere (v6)
 ###
-{% endhighlight %}
+</code></pre>
 
 And done! Now you have your Postgres running and can be accessed from any remote.
 Thanks to many posts help me setting all this up.

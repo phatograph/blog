@@ -168,7 +168,7 @@ div.content {
         ul,
         h3,
         blockquote,
-        > pre,
+        pre[class*='language-'],
         .twitter-tweet {
           margin-bottom: 30px !important;
 
@@ -185,8 +185,7 @@ div.content {
           }
         }
 
-        > pre {
-          padding: 0 1.5em 0 1.5em !important;
+        pre[class*='language-'] {
           font-size: 14px;
         }
 
@@ -311,14 +310,6 @@ div.content {
     @media (min-width: 1250px + 1px) {
       padding-right: 100px;
     }
-  }
-
-  .highlight {
-    font-family: 'Source Code Pro', sans-serif;
-    overflow-x: auto;
-    padding: 1em;
-    font-size: 13px;
-    background: $main-color-syntax;
   }
 
   div.cheats {

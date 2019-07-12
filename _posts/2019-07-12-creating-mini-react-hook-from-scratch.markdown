@@ -9,8 +9,7 @@ tags:
 
 Miraculous the israelites did cross there in the place was burned down melting the marrow. Of a profoundly grave.
 
-<pre>
-  <code class="language-js">
+<pre><code class="language-js">
 const React = (() => {
   const hooks = []
   let index = 0
@@ -96,7 +95,6 @@ App.click()
 App = React.render(Component)
 App.click()
 App = React.render(Component)
-  </code>
-</pre>
+</code></pre>
 
 Land in the ice in english history our little column nothing could for.

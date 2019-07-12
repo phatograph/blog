@@ -23,14 +23,14 @@ and since I'm working on a Rails application so I just have a go with [Ruby OAut
 
 A Consumer object will be used to get both OAuth token and Access token. To create it, according to Ruby OAuth, here's how to do so.
 
-{% highlight ruby %}
+<pre><code class="language-ruby">
 OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site => "https://api.twitter.com"})
-{% endhighlight%}
+</code></pre>
 
 And since this object is reuseable, we can make use of [Or Equals](http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html)
 and put it in a controller like this.
 
-{% highlight ruby %}
+<pre data-line="8-10"><code class="language-ruby">
 class ApiController < ApplicationController
   CALLBACK_URL = "/login/callback"
   TWITTER_CONSUMER_KEY = ""
@@ -42,7 +42,7 @@ private
     @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site => "https://api.twitter.com"})
   end
 end
-{% endhighlight%}
+</code></pre>
 
 Now that we have a Consumer, we can use it to make a request to get an OAuth token.
 
@@ -53,7 +53,7 @@ At this point, dont' forget to add the URL to your Twitter app's Callback URL.
 To get a request token, you'll to make a request using `consumer.get_request_token`.
 You'll also need to supply a callback URL within an object containing `:oauth_callback` as well.
 
-{% highlight ruby %}
+<pre data-line="7"><code class="language-ruby">
 class ApiController < ApplicationController
   CALLBACK_URL = "/login/callback"
   TWITTER_CONSUMER_KEY = ""
@@ -74,7 +74,7 @@ private
     @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site => "https://api.twitter.com"})
   end
 end
-{% endhighlight%}
+</code></pre>
 
 There are two important values, `_request_token.token` and `_request_token.secret`, they both need to be kept
 in order to recreate `_request_token` again in another action. So you can store them in Cookie, or session, your call.
@@ -91,18 +91,18 @@ so access to `_request_token` from `ApiController#request_token` is lost.
 We'll need to recreate it. Remember `_request_token.token` and `_request_token.secret` that you keep them?
 They shall be at help here, along with `consumer` as a private method.
 
-{% highlight ruby %}
+<pre><code class="language-ruby">
 _request_token = OAuth::RequestToken.from_hash(consumer, {
   oauth_token: params[:request_token_token],
   oauth_token_secret: params[:request_token_secret]
 })
-{% endhighlight%}
+</code></pre>
 
 Almost there! Now we have the `_request_token` back, and also `oauth_verifier` from Twitter. We can make a request for an Access token
 using `_request_token.get_access_token`.
 You'll also need to supply an OAuth verifier within an object containing `:oauth_verifier` as well.
 
-{% highlight ruby %}
+<pre data-line="16-19,21"><code class="language-ruby">
 class ApiController < ApplicationController
   CALLBACK_URL = "/login/callback"
   TWITTER_CONSUMER_KEY = ""
@@ -134,6 +134,6 @@ private
     @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site => "https://api.twitter.com"})
   end
 end
-{% endhighlight%}
+</code></pre>
 
 And finally, Access token get! You can any further request to Twitter using this token as you like. It's all yours now.
