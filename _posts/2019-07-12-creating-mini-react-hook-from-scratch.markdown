@@ -1,11 +1,14 @@
 ---
 layout: post
-title: "Creating mini React's Hook from scratch"
+title: "Creating mini React's Hooks from scratch"
 tags:
 - javascript
 - react
 - react-hook
 ---
+
+This is very much a transcription of [Getting Closure on React Hooks by Shawn Wang](https://www.youtube.com/watch?v=KJP1E-Y-xyo).
+I found the video a very nice way both to brush up a knowledge about Closure and React hooks. So enjoy!
 
 ### A simple `useState()`
 
@@ -18,7 +21,7 @@ countSet(1)
 console.log(count())  // 1
 </code></pre>
 
-Here we can use a Closure to store a variable as a state.
+Here we can use a function to store a private variable.
 
 <pre data-line="1-16"><code class="language-js">
 const useState = (initialState) => {
@@ -127,7 +130,7 @@ c.render()  // {count: 1}
 
 This component also has `Component.render()`, which just logs the output in a console, rather than renders to the DOM.
 
-Now we can implement `React.render()`, which creates a component, renders it, and also return the created component (so that we can do the action like `App.click`).
+Now we can implement `React.render()`, which creates a component, renders it, and also returns the created component (so that we can do the action like `App.click`).
 
 <pre data-line="19-23,27,44-47"><code class="language-js">
 const React = (() => {
@@ -353,11 +356,11 @@ const Component = () => {
 }
 
 let App;
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
 App = React.render(Component);  // {count: 1, text: 1}, whoa
 App.type('b')
-App = React.render(Component);  // {count: "b", text: "b"}, whoaa
+App = React.render(Component);  // {count: 'b', text: 'b'}, whoaa
 App.click()
 App = React.render(Component);  // {count: "b1", text: "b1"}, whoaaa
 App.click()
@@ -368,8 +371,8 @@ But it doesn't work as we expected (which means we expect that it will not work?
 Because `React` has only one `_state`, so it can hold only one state.
 
 To fix this, we can store states in a `hooks` array, with an `index` to controll an access to it.
-The `hooks` will start at `index=0`, so `0` from `count` will be stored at `index=0`,
-and `a` from `text` will be stored at `index=1`. This works because every time `React.useState()` is called,
+The `hooks` will start at `index:0`, so `0` from `count` will be stored at `index:0`,
+and `a` from `text` will be stored at `index:1`. This works because every time `React.useState()` is called,
 `index` will get incremented by 1.
 
 <pre data-line="2-3,6,9,12,52-58"><code class="language-js">
@@ -422,15 +425,15 @@ const Component = () => {
 }
 
 let App;
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
-App = React.render(Component);  // {count: 1, text: "a"}, this is ok
+App = React.render(Component);  // {count: 1, text: 'a'}, this is ok
 App.type('b')
-App = React.render(Component);  // {count: "b", text: "a"}, um, no
+App = React.render(Component);  // {count: 'b', text: 'a'}, um, no
 App.click()
-App = React.render(Component);  // {count: "b1", text: "a"}, no
+App = React.render(Component);  // {count: "b1", text: 'a'}, no
 App.click()
-App = React.render(Component);  // {count: "b11", text: "a"}, no
+App = React.render(Component);  // {count: "b11", text: 'a'}, no
 </code></pre>
 
 Now we can store both states just fine (line 52), but as we try to set states, it doesn't work correctly.
@@ -455,11 +458,11 @@ The third `React.render` calls `React.useState()` another 2 times, incrementing 
 Then we call `App.click()` which subsequently does `countSet(count + 1)`.
 
 But what is `count` here? It comes from the third re-rendering's `React.useState(0)`, by that time
-`index=4` and given `let state = hooks[index] || initialState`, that is
+`index:4` and given `let state = hooks[index] || initialState`, that is
 `let state = hooks[4] || initialState`, which is `b`!
 
 So we have `countSet('b' + 1)` which is `countSet('b1')`,
-given now `index=`6`, it eventually resulting in `hooks[6] = 'b1'`.
+given now `index:`6`, it eventually resulting in `hooks[6] = 'b1'`.
 
 Now we have;
 
@@ -472,7 +475,7 @@ And so on.
 Seems that we have a problem because `index` gets incremented constantly.
 How about we reset it every time we re-render the component?
 
-<pre data-line="21"><code class="language-js">
+<pre data-line="21,53-59"><code class="language-js">
 const React = (() => {
   const hooks = []
   let index = 0
@@ -523,15 +526,15 @@ const Component = () => {
 }
 
 let App;
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
-App = React.render(Component);  // {count: 0, text: "a"}, whoa, it gets worse
+App = React.render(Component);  // {count: 0, text: 'a'}, whoa, it gets worse
 App.type('b')
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 </code></pre>
 
 The first `React.render()` calling to `React.useState()`s still increments `index` from `0` to `2`.
@@ -606,15 +609,15 @@ const Component = () => {
 }
 
 let App;
-App = React.render(Component);  // {count: 0, text: "a"}
+App = React.render(Component);  // {count: 0, text: 'a'}
 App.click()
-App = React.render(Component);  // {count: 1, text: "a"}, yes!
+App = React.render(Component);  // {count: 1, text: 'a'}, yes!
 App.type('b')
-App = React.render(Component);  // {count: 1, text: "b"}, yes!
+App = React.render(Component);  // {count: 1, text: 'b'}, yes!
 App.click()
-App = React.render(Component);  // {count: 2, text: "b"}
+App = React.render(Component);  // {count: 2, text: 'b'}
 App.click()
-App = React.render(Component);  // {count: 3, text: "b"}
+App = React.render(Component);  // {count: 3, text: 'b'}
 </code></pre>
 
 Now let's see, the first `React.render()` calling to `React.useState()`s increments `index` from `0` to `2` as usual,
@@ -657,7 +660,7 @@ Now `React.useState()` works exactly what we expected!
 
 ### `React.useEffect()`
 
-TBD
+Moving on to the next hook. Let's say we would like to have a `useEffect()` as follow;
 
 <pre data-line="21-23,34,43-45,61-83"><code class="language-js">
 const React = (() => {
@@ -722,30 +725,31 @@ const Component = () => {
 let App;
 App = React.render(Component);
 // useEffect triggered 
-// {count: 0, text: "a"}
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 1, text: "a"}
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
 // useEffect triggered 
-// {count: 1, text: "b"}
+// {count: 1, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 2, text: "b"}
+// {count: 2, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 3, text: "b"}
+// {count: 3, text: 'b'}
 </code></pre>
 
-TBD
+By this way `useEffect()`'s callback will run every time a component is created.
+Let's try to have a dependency array.
 
 <pre data-line="21-24,46"><code class="language-js">
 const React = (() => {
@@ -811,32 +815,36 @@ const Component = () => {
 let App;
 App = React.render(Component);
 // useEffect triggered 
-// {count: 0, text: "a"}
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 1, text: "a"}
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
 // useEffect triggered 
-// {count: 1, text: "b"}
+// {count: 1, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 2, text: "b"}
+// {count: 2, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect triggered 
-// {count: 3, text: "b"}
+// {count: 3, text: 'b'}
 </code></pre>
 
-TBD
+We just pass in `depArray` as another argument and hard-coded `hasChanged` as `true`,
+so nothing has changed here.
 
-<pre data-line="22,27-28"><code class="language-js">
+So where should we keep tracking changes? Let's see, we already use
+the `hooks` array to keep states, why not also use it to track changes as well?
+
+<pre data-line="22,25,29-30,70,76,82,88,94"><code class="language-js">
 const React = (() => {
   const hooks = []
   let index = 0
@@ -860,6 +868,8 @@ const React = (() => {
   const useEffect = (callback, depArray) => {
     const oldDeps = hooks[index]
     let hasChanged = true
+
+    console.log('useEffect: ', oldDeps, depArray)
 
     if (hasChanged) callback()
     
@@ -904,33 +914,48 @@ const Component = () => {
 
 let App;
 App = React.render(Component);
-// useEffect triggered 
-// {count: 0, text: "a"}
+// useEffect: undefined [0]
+// useEffect triggered
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
-// useEffect triggered 
-// {count: 1, text: "a"}
+// useEffect: [0] [1]
+// useEffect triggered
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
-// useEffect triggered 
-// {count: 1, text: "b"}
+// useEffect: [1] [1]
+// useEffect triggered, but it shouldn't be
+// {count: 1, text: 'b'}
 
 App.click()
 App = React.render(Component);
-// useEffect triggered 
-// {count: 2, text: "b"}
+// useEffect: [1] [2]
+// useEffect triggered
+// {count: 2, text: 'b'}
 
 App.click()
 App = React.render(Component);
-// useEffect triggered 
-// {count: 3, text: "b"}
+// useEffect: [2] [3]
+// useEffect triggered
+// {count: 3, text: 'b'}
 </code></pre>
 
-TBD
+We now have both existing dependency array (`oldDeps`) and current dependency array (`depArray`).
+For now let's just log both of them (line 25).
+And we then replace the dependency array for next comparison. 
+We also need to increment `index` the same fashion as `useState()`.
 
-<pre data-line="25-29,74,80,86,91,97"><code class="language-js">
+So for the first rendering, `hooks[2]` is undefined, so is `oldDeps: undefined`, and `depArray: [1]`,
+then `useEffect()`'s callback should be triggered, and `hooks[2]` is to become `[1]`.
+
+As for the third rendering, `hooks[2]: [1]` and `depArray: [1]`, so `useEffect()`'s callback shouldn't be triggered.
+
+Next, we will compare both dependencies and determine `hasChanged` properly.
+
+<pre data-line="27-29,86"><code class="language-js">
 const React = (() => {
   const hooks = []
   let index = 0
@@ -1006,33 +1031,40 @@ let App;
 App = React.render(Component);
 // useEffect: undefined [0]
 // useEffect triggered 
-// {count: 0, text: "a"}
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [0] [1]
 // useEffect triggered 
-// {count: 1, text: "a"}
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
 // useEffect: [1] [1], here useEffect won't be triggered
-// {count: 1, text: "b"}
+// {count: 1, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [1] [2]
 // useEffect triggered 
-// {count: 2, text: "b"}
+// {count: 2, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [2] [3]
 // useEffect triggered 
-// {count: 3, text: "b"}
+// {count: 3, text: 'b'}
 </code></pre>
 
-TBD
+Note that this is a simple comparison but it should help you get the picture.
+We will compare each items in `oldDeps` and `depArray` by its respective position, i.e. index,
+if any of them is different, then `useEffect()`'s callback will be triggered.
+
+For the second rendering it will be `0 != 1`, so `useEffect()`'s callback will be triggered.
+And for the third rendering it will be `1 != 1`, so `useEffect()`'s callback will *not* be triggered.
+
+Let's try also having `text` in `depArray` as well.
 
 <pre data-line="57,74,80,86-87,92,98,101-106"><code class="language-js">
 const React = (() => {
@@ -1110,31 +1142,31 @@ let App;
 App = React.render(Component);
 // useEffect: undefined [0, 'a']
 // useEffect triggered 
-// {count: 0, text: "a"}
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [0, 'a'] [1, 'a']
 // useEffect triggered 
-// {count: 1, text: "a"}
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
 // useEffect: [1, 'a'] [1, 'b']
 // useEffect triggered, here useEffect will once again triggered
-// {count: 1, text: "b"}
+// {count: 1, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [1, 'b'] [2, 'b']
 // useEffect triggered 
-// {count: 2, text: "b"}
+// {count: 2, text: 'b'}
 
 App.click()
 App = React.render(Component);
 // useEffect: [2, 'b'] [3, 'b']
 // useEffect triggered 
-// {count: 3, text: "b"}
+// {count: 3, text: 'b'}
 
 App.type('c')
 App = React.render(Component);
@@ -1143,7 +1175,11 @@ App = React.render(Component);
 // {count: 3, text: "c"}
 </code></pre>
 
-TBD
+Now for the second rendering it will be `0 != 1 or 'a' != 'a'`, so `useEffect()`'s callback will be triggered.
+And for the third rendering it will be `1 != 1 or 'a' != 'b'`, so `useEffect()`'s callback will also be triggered.
+
+We can change the order of items in `depArray` and it still works, because each items in `oldDeps` and `depArray`
+will be compared respectively.
 
 <pre data-line="57,74,80,86"><code class="language-js">
 const React = (() => {
@@ -1219,21 +1255,21 @@ const Component = () => {
 
 let App;
 App = React.render(Component);
-// useEffect: undefined ["a", 0]
+// useEffect: undefined ['a', 0]
 // useEffect triggered 
-// {count: 0, text: "a"}
+// {count: 0, text: 'a'}
 
 App.click()
 App = React.render(Component);
-// useEffect: ["a", 0] ["a", 1]
+// useEffect: ['a', 0] ['a', 1]
 // useEffect triggered 
-// {count: 1, text: "a"}
+// {count: 1, text: 'a'}
 
 App.type('b')
 App = React.render(Component);
 // useEffect: ['a', 1] ['b', 1]
 // useEffect triggered
-// {count: 1, text: "b"}
+// {count: 1, text: 'b'}
 </code></pre>
 
-TBD
+And that's pretty much every thing now. Thanks again to Shawn Wang.
