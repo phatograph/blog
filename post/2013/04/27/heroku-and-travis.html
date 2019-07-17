@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Heroku and Travis | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">Heroku and Travis</a></h3>
+    <p class="date">
+      27 April 2013
+      
+      
+        in
+        <a class='tag' href='/tag/heroku/'>heroku</a>, <a class='tag' href='/tag/travis/'>travis</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2013-04-27-heroku-and-travis.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>The story was this, I would like to have a CI to get my code from GitHub,
+maybe run some test, and deploy it to Heroku. So I could commit to one place
+(<code>master</code>) and everything would be set up. Travis is very handy in this,
+but require some configurations.</p>
+
+<p>Well I’ve covered most of my Travis knowledge on <a href="/articles/2013/04/26/heroku-and-unicorn/">previous post</a>
+so there’s nothing much here. Let’s see my configuration for the upcoming <a href="https://github.com/phatograph/phatograph2013">phatograph2013</a>
+then.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
+<span class="ss">rvm:
+</span><span class="o">-</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span>
+<span class="ss">after_script:
+</span><span class="o">-</span> <span class="k">if</span> <span class="p">[[</span> <span class="s2">"$TRAVIS_BRANCH"</span> <span class="o">!=</span> <span class="s2">"master"</span> <span class="p">]];</span> <span class="k">then</span> <span class="nb">exit</span> <span class="mi">0</span><span class="p">;</span> <span class="n">fi</span>
+<span class="o">-</span> <span class="n">wget</span> <span class="o">-</span><span class="n">qO</span><span class="o">-</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">toolbelt</span><span class="p">.</span><span class="nf">heroku</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">ubuntu</span><span class="p">.</span><span class="nf">sh</span> <span class="o">|</span> <span class="n">sh</span>
+<span class="o">-</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">heroku</span> <span class="n">git</span><span class="vi">@heroku</span><span class="p">.</span><span class="nf">com</span><span class="ss">:phatograph2013</span><span class="p">.</span><span class="nf">git</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="s2">"Host heroku.com"</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="s2">"   StrictHostKeyChecking no"</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="s2">"   CheckHostIP no"</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="s2">"   UserKnownHostsFile=/dev/null"</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+<span class="o">-</span> <span class="n">heroku</span> <span class="n">keys</span><span class="ss">:clear</span>
+<span class="o">-</span> <span class="n">yes</span> <span class="o">|</span> <span class="n">heroku</span> <span class="n">keys</span><span class="ss">:add</span>
+<span class="o">-</span> <span class="n">yes</span> <span class="o">|</span> <span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span>
+<span class="ss">env:
+  global:
+  </span><span class="o">-</span> <span class="ss">secure: </span><span class="o">!</span> <span class="err">'</span><span class="no">FZ4Os</span><span class="o">+</span><span class="mi">3</span><span class="n">zidYERHmdesrifZO47XGy7jOfH4v</span><span class="o">/</span><span class="n">wbYofbRhLQJUwplQHFVF6aHi</span></code></pre></figure>
+
+<p>This build came up from <a href="http://xseignard.github.io/2013/02/18/continuous-deployement-with-github-travis-and-heroku-for-node.js/">many</a>
+<a href="http://stackoverflow.com/questions/10235026/how-to-deploy-an-rails-app-on-heroku-from-travis-ci">really</a>
+<a href="http://metabates.com/2012/10/23/deploying-to-heroku-from-travisci/">nice</a>
+<a href="http://www.neilmiddleton.com/deploying-to-heroku-from-travis-ci/">posts</a>.
+I would like to thank them all here. The trick, is you need to encrypt your Heroku API key.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>travis encrypt <span class="nv">HEROKU_API_KEY</span><span class="o">=</span>&lt;your_heroku_key&gt; --add</code></pre></figure>
+
+<p>The command would generate a <code>secure:</code> property. Another note at this line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">- <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$TRAVIS_BRANCH</span><span class="s2">"</span> !<span class="o">=</span> <span class="s2">"master"</span> <span class="o">]]</span>; <span class="k">then </span><span class="nb">exit </span>0; <span class="k">fi</span></code></pre></figure>
+
+<p>I have the CI perform only commits to <code>master</code>, so the feature branch
+commits won’t trigger the code deployment.</p>
+
+<p>And because I don’t have any test suite for this site. So I have to let
+the rake run nothing</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># !/usr/bin/env rake</span>
+<span class="c"># Add your own tasks in files placed in lib/tasks ending in .rake,</span>
+<span class="c"># for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.</span>
+
+require File.expand_path<span class="o">(</span><span class="s1">'../config/application'</span>, __FILE__<span class="o">)</span>
+
+Phatograph2013::Application.load_tasks
+
+task :default <span class="o">=</span>&gt; <span class="o">[]</span></code></pre></figure>
+
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Rails OAuth with Twitter | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">Rails OAuth with Twitter</a></h3>
+    <p class="date">
+      06 February 2019
+      
+      
+        in
+        <a class='tag' href='/tag/rails/'>rails</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2019-02-06-rails-oauth-with-twitter.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>It had been an eternal struggling with me and OAuth since forever.
+I didn’t fully get how it works before. I first had to deal with Twitter authentication when I created
+Twlist (with <a href="https://github.com/phatograph/twlist">Node</a> and also <a href="https://github.com/phatograph/twlist-rails">Rails</a>)
+And later on I when created <a href="https://github.com/phatograph/mediagrid">Twit Media Grid</a> I think I understand it a bit more.</p>
+
+<p>But no, that was a mistake. And since then I haven’t worked any on it anymore. So the knowledge eventually got lost in space.</p>
+
+<p>Now fast-forward to the present day I had to work this very Twitter authentication again.
+So I dug through my old code and realised those are not going to work. At least not production-ready for sure.
+Well then, perhaps it’s time to work on it properly.</p>
+
+<p>Figured it would be too much pain <a href="https://developer.twitter.com/en/docs/basics/authentication/guides/authorizing-a-request">collecting parameter from scratch</a>
+and since I’m working on a Rails application so I just have a go with <a href="https://github.com/oauth-xx/oauth-ruby">Ruby OAuth</a> gem. Here goes.</p>
+
+<h3 id="create-a-consumer-object">1. Create a Consumer object</h3>
+
+<p>A Consumer object will be used to get both OAuth token and Access token. To create it, according to Ruby OAuth, here’s how to do so.</p>
+
+<pre><code class="language-ruby">
+OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site =&gt; "https://api.twitter.com"})
+</code></pre>
+
+<p>And since this object is reuseable, we can make use of <a href="http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html">Or Equals</a>
+and put it in a controller like this.</p>
+
+<pre data-line="8-10"><code class="language-ruby">
+class ApiController &lt; ApplicationController
+  CALLBACK_URL = "/login/callback"
+  TWITTER_CONSUMER_KEY = ""
+  TWITTER_CONSUMER_SECRET = ""
+
+private
+
+  def consumer
+    @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site =&gt; "https://api.twitter.com"})
+  end
+end
+</code></pre>
+
+<p>Now that we have a Consumer, we can use it to make a request to get an OAuth token.</p>
+
+<h3 id="getting-a-request-token">2. Getting a request token</h3>
+
+<p>At this point, dont’ forget to add the URL to your Twitter app’s Callback URL.</p>
+
+<p>To get a request token, you’ll to make a request using <code>consumer.get_request_token</code>.
+You’ll also need to supply a callback URL within an object containing <code>:oauth_callback</code> as well.</p>
+
+<pre data-line="7"><code class="language-ruby">
+class ApiController &lt; ApplicationController
+  CALLBACK_URL = "/login/callback"
+  TWITTER_CONSUMER_KEY = ""
+  TWITTER_CONSUMER_SECRET = ""
+
+  def request_token
+    _request_token = consumer.get_request_token(:oauth_callback =&gt; "#{params[:base_url]}#{CALLBACK_URL}")
+
+    session[:request_token] = _request_token.token,
+    session[:request_secret] = _request_token.secret,
+
+    redirect_to _request_token.authorize_url(:oauth_callback =&gt; "#{params[:base_url]}#{CALLBACK_URL}"),
+  end
+
+private
+
+  def consumer
+    @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site =&gt; "https://api.twitter.com"})
+  end
+end
+</code></pre>
+
+<p>There are two important values, <code>_request_token.token</code> and <code>_request_token.secret</code>, they both need to be kept
+in order to recreate <code>_request_token</code> again in another action. So you can store them in Cookie, or session, your call.</p>
+
+<p>Now with a URL generated from <code>_request_token.authorize_url</code>, you’ll need to navigate a user to this URL, which is Twitter’s authorisation page.
+In the page, if they’re not already logged in they’ll need to fill in their credentials, then they’ll be asked to authorise the app.</p>
+
+<p>Finally they will be redirected back to your application callback URL, along with some query strings, one of them is <code>oauth_verifier</code>.</p>
+
+<h3 id="getting-an-access-token">3. Getting an Access token</h3>
+
+<p>Since a user will be landed in another action (in this case, <code>ApiController#access_token</code>),
+so access to <code>_request_token</code> from <code>ApiController#request_token</code> is lost.
+We’ll need to recreate it. Remember <code>_request_token.token</code> and <code>_request_token.secret</code> that you keep them?
+They shall be at help here, along with <code>consumer</code> as a private method.</p>
+
+<pre><code class="language-ruby">
+_request_token = OAuth::RequestToken.from_hash(consumer, {
+  oauth_token: params[:request_token_token],
+  oauth_token_secret: params[:request_token_secret]
+})
+</code></pre>
+
+<p>Almost there! Now we have the <code>_request_token</code> back, and also <code>oauth_verifier</code> from Twitter. We can make a request for an Access token
+using <code>_request_token.get_access_token</code>.
+You’ll also need to supply an OAuth verifier within an object containing <code>:oauth_verifier</code> as well.</p>
+
+<pre data-line="16-19,21"><code class="language-ruby">
+class ApiController &lt; ApplicationController
+  CALLBACK_URL = "/login/callback"
+  TWITTER_CONSUMER_KEY = ""
+  TWITTER_CONSUMER_SECRET = ""
+
+  def request_token
+    _request_token = consumer.get_request_token(:oauth_callback =&gt; "#{params[:base_url]}#{CALLBACK_URL}")
+
+    session[:request_token] = _request_token.token
+    session[:request_secret] = _request_token.secret
+
+    redirect_to _request_token.authorize_url(:oauth_callback =&gt; "#{params[:base_url]}#{CALLBACK_URL}"),
+  end
+
+  def access_token
+    _request_token = OAuth::RequestToken.from_hash(consumer, {
+      oauth_token: session[:request_token],
+      oauth_token_secret: session[:request_secret],
+    })
+
+    access_token = _request_token.get_access_token(oauth_verifier: params[:oauth_verifier])
+
+    render json: access_token
+  end
+
+private
+
+  def consumer
+    @@consumer ||= OAuth::Consumer.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, {:site =&gt; "https://api.twitter.com"})
+  end
+end
+</code></pre>
+
+<p>And finally, Access token get! You can any further request to Twitter using this token as you like. It’s all yours now.</p>
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>

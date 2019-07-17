@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Creating mini React's Hooks from scratch | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">Creating mini React's Hooks from scratch</a></h3>
+    <p class="date">
+      12 July 2019
+      
+      
+        in
+        <a class='tag' href='/tag/javascript/'>javascript</a>, <a class='tag' href='/tag/react/'>react</a>, <a class='tag' href='/tag/react-hook/'>react-hook</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2019-07-12-creating-mini-react-hook-from-scratch.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>This is very much a transcription of <a href="https://www.youtube.com/watch?v=KJP1E-Y-xyo">Getting Closure on React Hooks by Shawn Wang</a>.
+I found the video a very nice way both to brush up a knowledge about Closure and React hooks. So enjoy!</p>
+
+<h3 id="a-simple-usestate">A simple <code>useState()</code></h3>
+
+<p>Let’s start with a simple <code>useState()</code> which does something like this;</p>
+
+<pre><code class="language-js">
+const [count, countSet] = useState(0)
+console.log(count())  // 0
+countSet(1)
+console.log(count())  // 1
+</code></pre>
+
+<p>Here we can use a function to store a private variable.</p>
+
+<pre data-line="1-16"><code class="language-js">
+const useState = (initialState) =&gt; {
+  let state = initialState
+
+  const getState = () =&gt; {
+    return state
+  }
+
+  const setState = (newState) =&gt; {
+    state = newState
+  }
+
+  return [
+    getState,
+    setState,
+  ]
+}
+
+const [count, countSet] = useState(0)
+console.log(count())  // 0
+countSet(1)
+console.log(count())  // 1
+</code></pre>
+
+<h3 id="reactusestate"><code>React.useState()</code></h3>
+
+<p>To mimic <code>React.useState()</code>, we can wrap out <code>useState()</code> in a <code>React</code> object
+and it still works the same way.</p>
+
+<pre data-line="1,19-22,24"><code class="language-js">
+const React = (() =&gt; {
+  const useState = (initialState) =&gt; {
+    let state = initialState
+
+    const getState = () =&gt; {
+      return state
+    }
+
+    const setState = (newState) =&gt; {
+      state = newState
+    }
+
+    return [
+      getState,
+      setState,
+    ]
+  }
+
+  return {
+    useState,
+  }
+})()
+
+const [count, countSet] = React.useState(0)
+console.log(count())  // 0
+countSet(1)
+console.log(count())  // 1
+</code></pre>
+
+<p>Since React renders a component, but we don’t have <code>React.render()</code> yet.
+So let’s create a component first.</p>
+
+<pre data-line="24-35,37-40"><code class="language-js">
+const React = (() =&gt; {
+  const useState = (initialState) =&gt; {
+    let state = initialState
+
+    const getState = () =&gt; {
+      return state
+    }
+
+    const setState = (newState) =&gt; {
+      state = newState
+    }
+
+    return [
+      getState,
+      setState,
+    ]
+  }
+
+  return {
+    useState,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+
+  return {
+    render: () =&gt; {
+      console.log({count: count()})
+    },
+    click: () =&gt; {
+      countSet(1)
+    },
+  }
+}
+
+const c = new Component()
+c.render()  // {count: 0}
+c.click()
+c.render()  // {count: 1}
+</code></pre>
+
+<p>This component also has <code>Component.render()</code>, which just logs the output in a console, rather than renders to the DOM.</p>
+
+<p>Now we can implement <code>React.render()</code>, which creates a component, renders it, and also returns the created component (so that we can do the action like <code>App.click</code>).</p>
+
+<pre data-line="19-23,27,44-47"><code class="language-js">
+const React = (() =&gt; {
+  const useState = (initialState) =&gt; {
+    let state = initialState
+
+    const getState = () =&gt; {
+      return state
+    }
+
+    const setState = (newState) =&gt; {
+      state = newState
+    }
+
+    return [
+      getState,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+
+  return {
+    render: () =&gt; {
+      console.log({count: count()})
+    },
+    click: () =&gt; {
+      countSet(1)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0}
+App.click()
+App = React.render(Component);  // {count: 0}, whoa
+</code></pre>
+
+<p>Now we have a problem. At line 47, it outputs <code>{count: 0}</code> instead of expected <code>{count: 1}</code>.</p>
+
+<p>This happens because every time we call <code>React.render()</code>, a component will get newly created (<code>const c = component()</code>).
+This behaviour is essentially what we call <strong>re-rendering</strong>.</p>
+
+<p>With a newly created component of each re-rendering, a local <code>state</code> in <code>React.useState()</code> is also created,
+thus we lose the old <code>state</code>.</p>
+
+<p>We can fix this problem by using a closure.</p>
+
+<pre data-line="2,5,8,12,45"><code class="language-js">
+const React = (() =&gt; {
+  let _state
+
+  const useState = (initialState) =&gt; {
+    let state = _state || initialState
+
+    const setState = (newState) =&gt; {
+      _state = newState
+    }
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+
+  return {
+    render: () =&gt; {
+      console.log({count})
+    },
+    click: () =&gt; {
+      countSet(1)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0}
+App.click()
+App = React.render(Component);  // {count: 1}, nice!
+</code></pre>
+
+<p>By moving <code>state</code> within <code>React.useState()</code> to the outer level, namely <code>_state</code> (line 2).
+We then create a closure by having a new <code>state</code> within <code>React.useState()</code> <em>closures</em> over <code>_state</code> (line 5).</p>
+
+<p>So the first time <code>React.useState(0)</code> is called <code>_state</code> will be <code>undefined</code>,
+so closured <code>state</code> will fallback to <code>initialState</code> (<code>undefined || 0</code>) and end up as <code>0</code>.</p>
+
+<p>Now we can update the closured <code>state</code> properly, <code>App.click()</code> will change <code>_state</code> to <code>1</code>.
+Then as the component re-renders, <code>React.useState(0)</code> will get called again, but this time
+<code>_state</code> is <code>1</code> so the closured <code>state</code> will use <code>_state</code> value as <code>1</code>, it will not fallback to <code>initialState</code> (<code>1 || 0</code>).</p>
+
+<p>Now that we have it work properly, let’s change the click behaviour
+to increase the count.</p>
+
+<pre data-line="37,46-49"><code class="language-js">
+const React = (() =&gt; {
+  let _state
+
+  const useState = (initialState) =&gt; {
+    let state = _state || initialState
+
+    const setState = (newState) =&gt; {
+      _state = newState
+    }
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+
+  return {
+    render: () =&gt; {
+      console.log({count})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0}
+App.click()
+App = React.render(Component);  // {count: 1}
+App.click()
+App = React.render(Component);  // {count: 2}
+App.click()
+App = React.render(Component);  // {count: 3}
+</code></pre>
+
+<p>Let’s see we now want another state in a component to hold a text
+and name it <code>text</code>. We will output the text in a console and have
+<code>Component.type()</code> to change it.</p>
+
+<pre data-line="31,35,40-42,47-55"><code class="language-js">
+const React = (() =&gt; {
+  let _state
+
+  const useState = (initialState) =&gt; {
+    let state = _state || initialState
+
+    const setState = (newState) =&gt; {
+      _state = newState
+    }
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    render,
+    useState,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 1, text: 1}, whoa
+App.type('b')
+App = React.render(Component);  // {count: 'b', text: 'b'}, whoaa
+App.click()
+App = React.render(Component);  // {count: "b1", text: "b1"}, whoaaa
+App.click()
+App = React.render(Component);  // {count: "b11", text: "b11"}, whoaaaa
+</code></pre>
+
+<p>But it doesn’t work as we expected (which means we expect that it will not work? Or it doesn’t work as we expect? I wonder…).
+Because <code>React</code> has only one <code>_state</code>, so it can hold only one state.</p>
+
+<p>To fix this, we can store states in a <code>hooks</code> array, with an <code>index</code> to controll an access to it.
+The <code>hooks</code> will start at <code>index:0</code>, so <code>0</code> from <code>count</code> will be stored at <code>index:0</code>,
+and <code>a</code> from <code>text</code> will be stored at <code>index:1</code>. This works because every time <code>React.useState()</code> is called,
+<code>index</code> will get incremented by 1.</p>
+
+<pre data-line="2-3,6,9,12,52-58"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    let state = hooks[index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    render,
+    useState,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 1, text: 'a'}, this is ok
+App.type('b')
+App = React.render(Component);  // {count: 'b', text: 'a'}, um, no
+App.click()
+App = React.render(Component);  // {count: "b1", text: 'a'}, no
+App.click()
+App = React.render(Component);  // {count: "b11", text: 'a'}, no
+</code></pre>
+
+<p>Now we can store both states just fine (line 52), but as we try to set states, it doesn’t work correctly.</p>
+
+<p>This is quite subtle, as we said that <code>index</code> gets incremented constantly, the first time we call <code>React.render()</code>,
+<code>React.useState()</code> gets called 2 times, thus <code>index</code> will increment from <code>0</code> to <code>2</code>.</p>
+
+<p>Then we call <code>App.click()</code> which subsequently does <code>countSet(count + 1)</code>, count is <code>0</code> here so it will be
+<code>countSet(1)</code>, given now <code>index</code> is <code>2</code>, it eventually resulting in <code>hooks[2] = 1</code>.</p>
+
+<p>Now we have <code>hooks: [undefined, undefined, 1]</code>, which doesn’t look like what we want. But let’s continue anyway.</p>
+
+<p>The second <code>React.render</code> calls <code>React.useState()</code> another 2 times, incrementing index from <code>2</code> to <code>4</code>.</p>
+
+<p>Then we call <code>App.type('b')</code> which subsequently does <code>textSet('b')</code>,
+given now <code>index: 4</code>, it eventually resulting in <code>hooks[4] = 'b'</code>.</p>
+
+<p>Now we have <code>hooks: [undefined, undefined, 1, undefined, 'b']</code>.</p>
+
+<p>The third <code>React.render</code> calls <code>React.useState()</code> another 2 times, incrementing <code>index</code> from <code>4</code> to <code>6</code>.</p>
+
+<p>Then we call <code>App.click()</code> which subsequently does <code>countSet(count + 1)</code>.</p>
+
+<p>But what is <code>count</code> here? It comes from the third re-rendering’s <code>React.useState(0)</code>, by that time
+<code>index:4</code> and given <code>let state = hooks[index] || initialState</code>, that is
+<code>let state = hooks[4] || initialState</code>, which is <code>b</code>!</p>
+
+<p>So we have <code>countSet('b' + 1)</code> which is <code>countSet('b1')</code>,
+given now <code>index:</code>6<code>, it eventually resulting in </code>hooks[6] = ‘b1’`.</p>
+
+<p>Now we have;</p>
+
+<pre><code class="language-js">
+hooks: [undefined, undefined, 1, undefined, 'b', undefined, 'b1']
+</code></pre>
+
+<p>And so on.</p>
+
+<p>Seems that we have a problem because <code>index</code> gets incremented constantly.
+How about we reset it every time we re-render the component?</p>
+
+<pre data-line="21,53-59"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    let state = hooks[index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    render,
+    useState,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 0, text: 'a'}, whoa, it gets worse
+App.type('b')
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 0, text: 'a'}
+</code></pre>
+
+<p>The first <code>React.render()</code> calling to <code>React.useState()</code>s still increments <code>index</code> from <code>0</code> to <code>2</code>.
+The first <code>App.click()</code> sets <code>hooks: [undefined, undefined, 1]</code>, okay, still ugly.</p>
+
+<p>Now the second <code>React.render()</code> resets <code>index</code> to <code>0</code>. That means once <code>React.useState(0)</code> is called,
+that means <code>let state = hooks[0] || initialState</code>, which is <code>let state = undefined || 0</code>.
+So <code>count</code> here is <code>0</code>.</p>
+
+<p>The same goes for <code>React.useState('a')</code> which gives
+<code>let state = hooks[1] || initialState</code>, which is <code>let state = undefined || 'a'</code>. So <code>text</code> here is <code>a</code>.</p>
+
+<p>Well now the <code>1</code> in <code>hooks: [undefined, undefined, 1]</code> doesn’t even get used.
+We managed to reset <code>index</code> all right, but the reference to a corresponding <code>index</code> of each <code>React.useState()</code> is lost.
+We somehow need to keep tracking the <code>index</code> for each <code>React.useState()</code>.</p>
+
+<p><a href="https://twitter.com/markdalgleish/status/1095025468367990784">Closure</a>:</p>
+
+<p><img src="https://pbs.twimg.com/media/DzJP2rLWkAAgxku.jpg:large" /></p>
+
+<pre data-line="6,7,10,54,56,58,60"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    render,
+    useState,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);  // {count: 0, text: 'a'}
+App.click()
+App = React.render(Component);  // {count: 1, text: 'a'}, yes!
+App.type('b')
+App = React.render(Component);  // {count: 1, text: 'b'}, yes!
+App.click()
+App = React.render(Component);  // {count: 2, text: 'b'}
+App.click()
+App = React.render(Component);  // {count: 3, text: 'b'}
+</code></pre>
+
+<p>Now let’s see, the first <code>React.render()</code> calling to <code>React.useState()</code>s increments <code>index</code> from <code>0</code> to <code>2</code> as usual,
+but now each save its own <code>_index</code>, so <code>_index: 0</code> for <code>count</code> and <code>_index: 1</code> for <code>text</code>.</p>
+
+<p>And here comes <code>App.click()</code>, calling <code>countSet(0 + 1)</code> which then is <code>hooks[_index] = 1</code>, which is <code>hooks[0] = 1</code>.</p>
+
+<p>So now <code>hooks: [1]</code>, looking good!</p>
+
+<p>The second <code>React.render()</code> then reset <code>index</code> to <code>0</code>.</p>
+
+<p>Then its calling to <code>React.useState(0)</code> which does 
+<code>const _index = index</code>, which is <code>const _index = 0</code>, still results in <code>_index: 0</code> for <code>count</code>.
+Then it does <code>let state = hooks[_index] || initialState</code>, which is <code>let state = hooks[0] || 0</code>,
+which is <code>let state = 1 || 0</code>, we then have <code>count</code> as <code>1</code>!</p>
+
+<p>While <code>React.useState('a')</code> will have <code>_index: 1</code> and while it does <code>let state = hooks[1] || 'a'</code>,
+which is <code>let state = undefined || 'a'</code>, we still have <code>text</code> as <code>a</code>.</p>
+
+<p>Then comes <code>App.type('b')</code>, calling <code>textSet('b')</code> which then is <code>hooks[_index] = 'b'</code>, which is <code>hooks[1] = 'b'</code></p>
+
+<p>So now <code>hooks: [1, 'b']</code>, aye, this is what we’re looking for.</p>
+
+<p>The third <code>React.render()</code> then reset <code>index</code> to <code>0</code>.</p>
+
+<p><code>React.useState(0)</code> having <code>_index: 0</code> will look for
+<code>let state = hooks[0] || 0</code>, which is <code>let state = 1 || 0</code>, so <code>count</code> is <code>1</code>.</p>
+
+<p>While <code>React.useState('a')</code> having <code>_index: 1</code> will look for
+<code>let state = hooks[1] || 0</code>, which is <code>let state = 'b' || 'a'</code>, so <code>text</code> is <code>b</code>.</p>
+
+<p>Then comes another <code>App.click()</code>, calling <code>countSet(1 + 1)</code> which then is <code>hooks[_index] = 2</code>, which is <code>hooks[0] = 2</code></p>
+
+<p>So now <code>hooks: [2, 'b']</code>.</p>
+
+<p>The third <code>React.render()</code> then reset <code>index</code> to <code>0</code>. <code>React.useState(0)</code> having <code>_index: 0</code> will look for
+<code>let state = hooks[0] || 0</code>, which is <code>let state = 2 || 0</code>, so <code>count</code> is <code>2</code>.</p>
+
+<p>Now <code>React.useState()</code> works exactly what we expected!</p>
+
+<h3 id="reactuseeffect"><code>React.useEffect()</code></h3>
+
+<p>Moving on to the next hook. Let’s say we would like to have a <code>useEffect()</code> as follow;</p>
+
+<pre data-line="21-23,34,43-45,61-83"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback) =&gt; {
+    callback()
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  });
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect triggered 
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect triggered 
+// {count: 1, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 2, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 3, text: 'b'}
+</code></pre>
+
+<p>By this way <code>useEffect()</code>’s callback will run every time a component is created.
+Let’s try to have a dependency array.</p>
+
+<pre data-line="21-24,46"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback, depArray) =&gt; {
+    let hasChanged = true
+    if (hasChanged) callback()
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  }, [count]);
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect triggered 
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect triggered 
+// {count: 1, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 2, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect triggered 
+// {count: 3, text: 'b'}
+</code></pre>
+
+<p>We just pass in <code>depArray</code> as another argument and hard-coded <code>hasChanged</code> as <code>true</code>,
+so nothing has changed here.</p>
+
+<p>So where should we keep tracking changes? Let’s see, we already use
+the <code>hooks</code> array to keep states, why not also use it to track changes as well?</p>
+
+<pre data-line="22,25,29-30,70,76,82,88,94"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback, depArray) =&gt; {
+    const oldDeps = hooks[index]
+    let hasChanged = true
+
+    console.log('useEffect: ', oldDeps, depArray)
+
+    if (hasChanged) callback()
+    
+    hooks[index] = depArray
+    index++
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  }, [count]);
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect: undefined [0]
+// useEffect triggered
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [0] [1]
+// useEffect triggered
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect: [1] [1]
+// useEffect triggered, but it shouldn't be
+// {count: 1, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [1] [2]
+// useEffect triggered
+// {count: 2, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [2] [3]
+// useEffect triggered
+// {count: 3, text: 'b'}
+</code></pre>
+
+<p>We now have both existing dependency array (<code>oldDeps</code>) and current dependency array (<code>depArray</code>).
+For now let’s just log both of them (line 25).
+And we then replace the dependency array for next comparison. 
+We also need to increment <code>index</code> the same fashion as <code>useState()</code>.</p>
+
+<p>So for the first rendering, <code>hooks[2]</code> is undefined, so is <code>oldDeps: undefined</code>, and <code>depArray: [1]</code>,
+then <code>useEffect()</code>’s callback should be triggered, and <code>hooks[2]</code> is to become <code>[1]</code>.</p>
+
+<p>As for the third rendering, <code>hooks[2]: [1]</code> and <code>depArray: [1]</code>, so <code>useEffect()</code>’s callback shouldn’t be triggered.</p>
+
+<p>Next, we will compare both dependencies and determine <code>hasChanged</code> properly.</p>
+
+<pre data-line="27-29,86"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback, depArray) =&gt; {
+    const oldDeps = hooks[index]
+    let hasChanged = true
+
+    console.log('useEffect: ', oldDeps, depArray)
+
+    if (oldDeps) {
+      hasChanged = depArray.some((x, i) =&gt; x != oldDeps[i])
+    }
+
+    if (hasChanged) callback()
+
+    hooks[index] = depArray
+    index++
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  }, [count]);
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect: undefined [0]
+// useEffect triggered 
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [0] [1]
+// useEffect triggered 
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect: [1] [1], here useEffect won't be triggered
+// {count: 1, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [1] [2]
+// useEffect triggered 
+// {count: 2, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [2] [3]
+// useEffect triggered 
+// {count: 3, text: 'b'}
+</code></pre>
+
+<p>Note that this is a simple comparison but it should help you get the picture.
+We will compare each items in <code>oldDeps</code> and <code>depArray</code> by its respective position, i.e. index,
+if any of them is different, then <code>useEffect()</code>’s callback will be triggered.</p>
+
+<p>For the second rendering it will be <code>0 != 1</code>, so <code>useEffect()</code>’s callback will be triggered.
+And for the third rendering it will be <code>1 != 1</code>, so <code>useEffect()</code>’s callback will <em>not</em> be triggered.</p>
+
+<p>Let’s try also having <code>text</code> in <code>depArray</code> as well.</p>
+
+<pre data-line="57,74,80,86-87,92,98,101-106"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback, depArray) =&gt; {
+    const oldDeps = hooks[index]
+    let hasChanged = true
+
+    console.log('useEffect: ', oldDeps, depArray)
+
+    if (oldDeps) {
+      hasChanged = depArray.some((x, i) =&gt; x != oldDeps[i])
+    }
+
+    if (hasChanged) callback()
+
+    hooks[index] = depArray
+    index++
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  }, [count, text]);
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect: undefined [0, 'a']
+// useEffect triggered 
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [0, 'a'] [1, 'a']
+// useEffect triggered 
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect: [1, 'a'] [1, 'b']
+// useEffect triggered, here useEffect will once again triggered
+// {count: 1, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [1, 'b'] [2, 'b']
+// useEffect triggered 
+// {count: 2, text: 'b'}
+
+App.click()
+App = React.render(Component);
+// useEffect: [2, 'b'] [3, 'b']
+// useEffect triggered 
+// {count: 3, text: 'b'}
+
+App.type('c')
+App = React.render(Component);
+// useEffect: [3, 'b'] [3, 'c']
+// useEffect triggered 
+// {count: 3, text: "c"}
+</code></pre>
+
+<p>Now for the second rendering it will be <code>0 != 1 or 'a' != 'a'</code>, so <code>useEffect()</code>’s callback will be triggered.
+And for the third rendering it will be <code>1 != 1 or 'a' != 'b'</code>, so <code>useEffect()</code>’s callback will also be triggered.</p>
+
+<p>We can change the order of items in <code>depArray</code> and it still works, because each items in <code>oldDeps</code> and <code>depArray</code>
+will be compared respectively.</p>
+
+<pre data-line="57,74,80,86"><code class="language-js">
+const React = (() =&gt; {
+  const hooks = []
+  let index = 0
+
+  const useState = (initialState) =&gt; {
+    const _index = index
+    let state = hooks[_index] || initialState
+
+    const setState = (newState) =&gt; {
+      hooks[_index] = newState
+    }
+
+    index++
+
+    return [
+      state,
+      setState,
+    ]
+  }
+
+  const useEffect = (callback, depArray) =&gt; {
+    const oldDeps = hooks[index]
+    let hasChanged = true
+
+    console.log('useEffect: ', oldDeps, depArray)
+
+    if (oldDeps) {
+      hasChanged = depArray.some((x, i) =&gt; x != oldDeps[i])
+    }
+
+    if (hasChanged) callback()
+
+    hooks[index] = depArray
+    index++
+  }
+
+  const render = (component) =&gt; {
+    index = 0
+    const c = component()
+    c.render()
+    return c
+  }
+
+  return {
+    useState,
+    useEffect,
+    render,
+  }
+})()
+
+const Component = () =&gt; {
+  const [count, countSet] = React.useState(0)
+  const [text, textSet] = React.useState('a')
+
+  React.useEffect(() =&gt; {
+    console.log('useEffect triggered');
+  }, [text, count]);
+
+  return {
+    render: () =&gt; {
+      console.log({count, text})
+    },
+    click: () =&gt; {
+      countSet(count + 1)
+    },
+    type: (x) =&gt; {
+      textSet(x)
+    },
+  }
+}
+
+let App;
+App = React.render(Component);
+// useEffect: undefined ['a', 0]
+// useEffect triggered 
+// {count: 0, text: 'a'}
+
+App.click()
+App = React.render(Component);
+// useEffect: ['a', 0] ['a', 1]
+// useEffect triggered 
+// {count: 1, text: 'a'}
+
+App.type('b')
+App = React.render(Component);
+// useEffect: ['a', 1] ['b', 1]
+// useEffect triggered
+// {count: 1, text: 'b'}
+</code></pre>
+
+<p>And that’s pretty much every thing now. Thanks again to Shawn Wang.</p>
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>

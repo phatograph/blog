@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Thoughts on OSX Mavericks | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">Thoughts on OSX Mavericks</a></h3>
+    <p class="date">
+      23 October 2013
+      
+      
+        in
+        <a class='tag' href='/tag/osx/'>osx</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2013-10-23-thoughts-on-osx-mavericks.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>Mavericks had been officially released. I installed in the next morning and
+started play around with it.</p>
+
+<p>At first glances I haven’t figured out any UI changes.
+I then immediately checked my development stacks if they still work.
+<code>rbenv</code> and <code>nvm</code> both seem to work well,
+I was able to run Rails and Node.js app like I could before.
+Just some reinstallation of <code>nokogiri</code> gem.
+Everything works just fine! Very glad with that.</p>
+
+<p>Now there came random discoveries:</p>
+
+<ul>
+  <li>
+    <p>Launchpad and Show Desktop animation seems to be more slick. Don’t like this much.</p>
+  </li>
+  <li>
+    <p>Safari 7 scrolling has changed slightly, become somehow more ‘stirct’
+to movements. Not sure I like this but should get used to it in no time.</p>
+  </li>
+  <li>
+    <p>‘Open Link in New Tab’ has been moved to topmost in context menu. Great!</p>
+  </li>
+  <li>
+    <p>Thai font has become more crisp.</p>
+  </li>
+  <li>
+    <p>Auto ‘’ substitute with ‘’ and “” with “”</p>
+  </li>
+  <li>
+    <p>My favourite one, quick preview image (by tapping space) is zoomable now.</p>
+  </li>
+</ul>
+
+<p>Just several reasons here could make me love this newly release.
+I have a thought that Apple still pays attention in these
+small user experience things, and that’s great.
+Even not many people might care, I do, and I’m really thankful for all of these.</p>
+
+<p>&lt;3 you Apple. Just keep doing great things.</p>
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>

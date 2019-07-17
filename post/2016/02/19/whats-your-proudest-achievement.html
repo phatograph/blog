@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>"What's your proudest achievement?" | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">"What's your proudest achievement?"</a></h3>
+    <p class="date">
+      19 February 2016
+      
+      
+        in
+        <a class='tag' href='/tag/self/'>self</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2016-02-19-whats-your-proudest-achievement.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>I was asked this question in an interview. I have created many pet projects
+so far, many that I liked and each has its own special charm, because these
+projects are generally to test new skills I’m interested in. But it
+did not take me long to realise my proudest one was Teeview.</p>
+
+<p class="image-c">
+  <img src="/assets/images/teeview00.png" style="width: 500px" />
+  <span>Teeview as on February 19th, 2016.</span>
+</p>
+
+<h3 id="teeview-was-born">Teeview was born!</h3>
+
+<p><a href="http://www.teeview.org">Teeview</a> is an index or catalog web site
+which gathers t-shirt campaigns of <a href="https://teespring.com">Teespring</a>
+and displays them altogether. For some reason Teespring decides not to
+have this ‘all campaigns’ page themselves, and that has been the reason
+why Teeview exists.</p>
+
+<blockquote>
+  <p>Teeview originally was created solely for my own use.</p>
+</blockquote>
+
+<p>I created Teeview on March 13th, 2013 (first commit). Back on that time I just knew
+about Teespring and would like to join some campaigns. But there
+were not so many campaigns shown on Teespring, so I had an idea to gather
+these campaigns from Google and Twitter, so I could take a look and
+join some.</p>
+
+<h3 id="teeview-met-teespring">Teeview met Teespring</h3>
+
+<p>A week after launching Teeview I tweeted the guys at
+Teespring to let them know that I was
+stalking and scraping their site, so if they don’t like it I
+could shut it down. But they seemed to be happy.</p>
+
+<p class="image-c">
+  <img src="/assets/images/teeview01.png" style="width: 500px" />
+  <span>Sadly I could not find the embedded version anymore. This was from my email.</span>
+</p>
+
+<p>They even helped me promoting Teeview by retweeting and mentioning
+many times in their Twitter. Thus some people started using Teeview.</p>
+
+<h3 id="people-wanted-their-campaigns-up">People wanted their campaigns up!</h3>
+
+<p>I usually got emails from users saying they liked my site and
+they would like their campaigns to be displayed too. Since Teeview uses
+an automated rake task to add campaigns, that time I needed
+to do this manual campaign adding via the rails console.
+Obviously not an efficient way but it just worked that time, with not
+so many requests.</p>
+
+<p>September 2013, six months after launching, Teeview’s campaigns
+almost reached 10,000 records, which is the limit of <a href="https://www.heroku.com/pricing">Heroku’s
+Postgres free plan</a>.
+I then decided to rent an external server for hosting a database.
+Now there was a maintenance cost I need to cover.
+Therefore one month later I placed a paypal donation link.
+And my users helped me a lot! I could keep Teeview running without
+any financial problem.</p>
+
+<h3 id="but-people-also-wanted-their-campaigns-hidden-">But people also wanted their campaigns hidden …</h3>
+
+<p>I still had been regularly getting emails from users, but at the end of
+2013, users started to ask me to hide their campaigns. It turned out
+that there were people using Teeview to look for popular campaigns …
+and <em>copy</em> them. I did take this as a serious matter and immediately
+granted their requests. Well, still using rails console, though.</p>
+
+<p>This kind of requests got more frequent,
+and the ones for adding new campaigns
+still kept coming. I got tired of the manual
+console work. So I decided to implement the solution
+to this properly, by adding a membership system.</p>
+
+<h3 id="teeview-had-registered-users">Teeview had registered users!</h3>
+
+<p>January 13th, 2014, I shipped the membership system for Teeview,
+allowing registered users to directly add their campaigns, and also
+request to hide their campaigns (or so called archive).</p>
+
+<p class="image-c">
+  <img src="/assets/images/teeview02.png" style="width: 500px" />
+  <span>Teeview user's campaigns management page.</span>
+</p>
+
+<p>The way campaign archiving works is first the user requests for
+archiving, and the requested campaigns show up in the admin panel,
+but at this time even without approval they are already hidden.
+The approval is just that I want to have a quick glance what is
+being requested. I would just accept right away.</p>
+
+<p>This self-campaigns management went very well and all email requests
+were gone in couple of weeks.</p>
+
+<h3 id="teeview-facebook-page">Teeview Facebook page</h3>
+
+<p>As another channel to reach out users I created a <a href="https://www.facebook.com/teeviewofficial/">Facebook page
+for Teeview</a> on
+February 12, 2014. It gradually has gained more likes since then.</p>
+
+<p class="image-c">
+  <img src="/assets/images/teeview03.png" style="width: 500px" />
+</p>
+
+<p>By using the page I can announce some changes and easily run some surveys.
+Also some users would message me if they have
+any question or something goes wrong in Teeview, so that I could
+fix it promptly.</p>
+
+<h3 id="teeview-met-teespring-2">Teeview met Teespring #2</h3>
+
+<p>It’s been a while and Teespring said Hi to me again,
+this time I was introduced to Walker Williams,
+the co-founder and CEO himself! I was very pleased and honoured
+that they cared and reached out to me. We discussed about
+protecting Teespring’s power sellers from copycats. I agreed
+and was more than happy to implement a rule to check a <em>hidden variable</em>
+on upcoming campaigns and opt them out from displaying
+on Teeview.</p>
+
+<blockquote>
+  <p>“I wanted to make sure we told you first as you’re the first one we want on our white list!”
+– Teespring</p>
+</blockquote>
+
+<p>They were so kind and generous and they donated (a lot)
+to help Teeview running, thanks a lot Teespring folks!</p>
+
+<h3 id="from-donation-to-advertisement">From donation to advertisement</h3>
+
+<p>In mid 2014 I got a European scholarship and decided to quit
+my job and study a master’s abroad. With a lot of users having
+already donated (thanks a lot again, guys) it’s pretty
+normal that funding this way is going to fade out sooner
+or later. And now that I didn’t have a salary anymore,
+I rolled out a survey to ask if the users were willing to
+pay for a monthly subscription, which I thought it could be around
+$1.99 or $2.99.</p>
+
+<p>For a couple months of surveying, around 200 users were willing
+to pay. But in my mind I always wanted to keep the service free.
+And I was so busy with the university stuff, I simply stalled the plan.</p>
+
+<p>Luckily, in May 2015, I was contacted by <a href="https://teespy.com/">TeeSpy</a>,
+which also does a great job in campaign informations, asking to be a partner.
+I decided to cooperate with this awesome people, and since then
+Teeview has had their advertisement banner flag flying high up in the right.
+And thanks to them that solved the Teespring financial problem.</p>
+
+<h3 id="all-the-great-moments-now-to-the-sunset-">All the great moments, now to the sunset …</h3>
+
+<p class="image-c">
+  <img src="/assets/images/teeview04.png" style="" />
+</p>
+
+<p>From its glorious days in 2014 to its
+down road in late 2015, to me it has been so long.
+Teeview is the first project that made me interact with real users (all over the world!)
+and real companies. Solving user cases. Negotiating and doing
+some actual businesses. Making
+<a href="https://www.shopify.com/blog/14515425-how-to-start-an-online-t-shirt-business-the-ultimate-guide">some</a>
+<a href="http://cloudincome.com/make-over-400-week/">impact</a> out there.
+It has been an unbelievably outstanding experience from which I learned a lot.</p>
+
+<p class="image-c">
+  <img src="/assets/images/teeview05.png" style="" />
+  <span>Users from all over the world!</span>
+</p>
+
+<p>Considering from the graph that less users are using Teeview,
+perhaps it’s time to call it a day. But there’s always tomorrow!
+I believe Teeview needs a rewrite and reengineering, to be
+better in both performance and appearance. I will do my best
+to keep it running good and adapt it to match nowadays usage.
+Teeview shall rise again!</p>
+
+<p>Lastly, it’s been my pleasure to be able to create a project
+that has been and will be used by many people. I would like to thank you all.
+You all make me so happy. All the best and thank you!</p>
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>

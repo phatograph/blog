@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Travis to the rescue | phato.blog</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/fonts/metrize_icons/style.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(/assets/fonts/DroidSerif.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(/assets/fonts/DroidSerif-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(/assets/fonts/DroidSerif-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Droid Serif Bold Italic'), local('DroidSerif-BoldItalic'), url(/assets/fonts/DroidSerif-BoldItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/SourceCodePro-ExtraLight.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Source Code Pro Light'), local('SourceCodePro-Light'), url(/assets/fonts/SourceCodePro-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(/assets/fonts/SourceCodePro-Regular.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Source Code Pro Medium'), local('SourceCodePro-Medium'), url(/assets/fonts/SourceCodePro-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Source Code Pro Semibold'), local('SourceCodePro-Semibold'), url(/assets/fonts/SourceCodePro-Semibold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url(/assets/fonts/SourceCodePro-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Source Code Pro Black'), local('SourceCodePro-Black'), url(/assets/fonts/SourceCodePro-Black.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Ubuntu Light'), local('Ubuntu-Light'), url(/assets/fonts/Ubuntu-Light.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu'), url(/assets/fonts/Ubuntu.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(/assets/fonts/Ubuntu-Medium.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(/assets/fonts/Ubuntu-Bold.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 300;
+        src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(/assets/fonts/Ubuntu-LightItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Ubuntu Italic'), local('Ubuntu-Italic'), url(/assets/fonts/Ubuntu-Italic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 500;
+        src: local('Ubuntu Medium Italic'), local('Ubuntu-MediumItalic'), url(/assets/fonts/Ubuntu-MediumItalic.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-weight: 700;
+        src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(/assets/fonts/Ubuntu-BoldItalic.woff) format('woff');
+      }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.css" rel="stylesheet" />
+
+    <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/assets/javascripts/bootstrap.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <div class="text">
+            <h1><a href="/">phato.blog</a></h1>
+            <p>Humble semi-technical blog of Pat Wangrungarun</p>
+          </div>
+          <div class="links">
+            <p>
+              <a href="http://www.phatograph.com" target="_blank"><i class="icon-star"></i></a>
+              <a href="/archives"><i class="icon-list-square"></i></a>
+              <a href="http://twitter.com/phatograph" target="_blank"><i class="icon-social-twitter"></i></a>
+              <a href="http://th.linkedin.com/in/phatograph" target="_blank"><i class="icon-social-linkedin"></i></a>
+              <a href="http://github.com/phatograph" target="_blank"><i class="icon-social-github"></i></a><br />
+              <a href="/cheats"><i class="icon-text-paragraph"></i></a>
+              <a data-toggle="tooltip" title="phatograph" data-placement="bottom"><i class="icon-social-skype" title="phatograph"></i></a>
+              <a data-toggle="tooltip" title="phatograph@gmail.com" data-placement="bottom" href="mailto:phatograph@gmail.com" title="phatograph@gmail.com"><i class="icon-air-plane"></i></a>
+            </p>
+          </div>
+          <!-- <p class="logo"><img src="/assets/images/logo.jpg" alt="logo" /></p> -->
+        </div>
+        <div class="posts">
+  <div class="post">
+    <h3><a href="">Travis to the rescue</a></h3>
+    <p class="date">
+      26 April 2013
+      
+      
+        in
+        <a class='tag' href='/tag/travis/'>travis</a>
+      
+      &middot;
+      <a href="https://github.com/phatograph/blog/commits/master/_posts/2013-04-26-travis-to-the-rescue.markdown" target="_blank" title="View post history">view history</a>
+    </p>
+    <div class="body">
+      <p>One thing I don’t like about Octopress it requires too much steps to write a single blog post. You have to:</p>
+
+<ul>
+  <li>Create a new post <code>rake new_post['Malesuada Ornare Mollis']</code></li>
+  <li>Write a content</li>
+  <li>Generate static files <code>rake generate</code></li>
+  <li>Deploy the generated site <code>rake deploy</code></li>
+</ul>
+
+<p>This is insane. 4 steps and terminal is required ? I just want to edit directly from the browser, and sometimes from Sublime.</p>
+
+<p>So <a href="https://travis-ci.org/">Travis CI</a> crossed my mind. What if I just push changes to <code>master</code> and let CI generate and deploy for me. Would be nice. And there is also <a href="http://prose.io/">prose.io</a> to make writing Markdown fancy.</p>
+
+<p>I tried with my own and I couldn’t customize Travis for my needs. So I came across this <a href="http://darvin.github.io/blog/2013/01/13/Prose_Octopress_TravisIO/">post</a> from Sergey Klimov. This saved my day. I would like to break things down here a bit. Several things are needed for this ritual to work.</p>
+
+<h3 id="generating-encrypted-ssh-key-for-travis">Generating encrypted SSH key for Travis</h3>
+
+<p>In order to make this happen, Travis has to hold our GitHub deploy SSH key. The key is needed to be encrypted too. Travis already provides the <code>travis encrypt</code> from its gem. Luke Patterson came up with this <a href="https://gist.github.com/lukewpatterson/4242707">gist</a> to make this easier, allow me to paste a part of it here:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>base64 --wrap<span class="o">=</span>0 ~/.ssh/id_rsa &gt; ~/.ssh/id_rsa_base64
+<span class="gp">$ </span><span class="nv">ENCRYPTION_FILTER</span><span class="o">=</span><span class="s2">"echo </span><span class="se">\$</span><span class="s2">(echo </span><span class="se">\"</span><span class="s2">-</span><span class="se">\"</span><span class="s2">)</span><span class="se">\$</span><span class="s2">(travis encrypt veewee-community/veewee-push </span><span class="se">\"\$</span><span class="s2">FILE='</span><span class="se">\`</span><span class="s2">cat </span><span class="nv">$FILE</span><span class="se">\`</span><span class="s2">'</span><span class="se">\"</span><span class="s2"> | grep secure:)"</span>
+<span class="gp">$ </span>split --bytes<span class="o">=</span>100 --numeric-suffixes --suffix-length<span class="o">=</span>2 --filter<span class="o">=</span><span class="s2">"</span><span class="nv">$ENCRYPTION_FILTER</span><span class="s2">"</span> ~/.ssh/id_rsa_base64 id_rsa_</code></pre></figure>
+
+<p>Basically (I think) it would encode our <code>id_rsa</code> in base64, split each line of them and run <code>travis encrypt .. --add</code>, resulting in the encrypted strings are appended to the <code>.travis.yml</code></p>
+
+<p>Unfortunately this doesn’t work in my OSX somehow (due to the <code>split</code> command). So I just <code>base64</code> my <code>id_rsa</code>, get that <code>id_rsa_base64</code>, open it, and do something like this.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>travis encrypt <span class="nv">id_rsa_00</span><span class="o">=</span>LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVE --add
+<span class="gp">$ </span>travis encrypt <span class="nv">id_rsa_01</span><span class="o">=</span>CkRFSy1JbmZvOiBBRVMtMTI4LUNCQyxFNDQ2OTNEQkMzNjcxOERFNTc5QzQ4MTQyNUExQjg4 --add
+<span class="gp">$ </span>travis encrypt <span class="nv">id_rsa_02</span><span class="o">=</span>OQoKMXhlbEljK2xlVGVNdlVrSUxNRE9LdCtsL1hQZy9VYy9zYXRrNGJUeWVPcnhLMnVmUysz --add
+<span class="gp">$ </span>travis encrypt
+...</code></pre></figure>
+
+<p>Hahaha I know this is horrible. Would have come up with more neat solution someday. For now I just paste those line in my terminal, then I have my encrypted key appended in <code>.travis.yml</code>.</p>
+
+<p>One thing, the SSH must not have the passphrase, Travis won’t be able to enter it via the prompt.</p>
+
+<p>Another thing to note is this encrypted key is for per-repo. You may to run those <code>travis encrypt</code> separately for each repository.</p>
+
+<h3 id="the-travisyml-itself">The <code>.travis.yml</code> itself</h3>
+
+<p>Sergey has provided his cool <code>.travis.yml</code> for this ritual in his post. I modified it a bit, here is what the file looks like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
+<span class="ss">language: </span><span class="n">ruby</span>
+<span class="ss">rvm:
+</span><span class="o">-</span> <span class="mi">1</span><span class="o">.</span><span class="mi">9</span><span class="o">.</span><span class="mi">3</span>
+<span class="ss">before_script:
+</span><span class="o">-</span> <span class="n">git</span> <span class="n">remote</span> <span class="n">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="vg">$REPO</span><span class="p">.</span><span class="nf">git</span>
+<span class="o">-</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="s2">"phatograph@gmail.com"</span>
+<span class="o">-</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="nf">name</span> <span class="s2">"Phat Wangrungarun (via TravisCI)"</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="o">-</span><span class="n">n</span> <span class="vg">$id_rsa_</span><span class="p">{</span><span class="mo">00</span><span class="p">.</span><span class="nf">.</span><span class="mi">32</span><span class="p">}</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa_base64</span>
+<span class="o">-</span> <span class="n">base64</span> <span class="o">--</span><span class="n">decode</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">garbage</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa_base64</span> <span class="o">&gt;</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span>
+<span class="o">-</span> <span class="n">chmod</span> <span class="mi">600</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span>
+<span class="o">-</span> <span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"Host github.com</span><span class="se">\n\t</span><span class="s2">StrictHostKeyChecking no</span><span class="se">\n</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">config</span>
+<span class="o">-</span> <span class="n">rake</span> <span class="n">setup_github_pages</span><span class="p">[</span><span class="vg">$REPO</span><span class="p">]</span>
+<span class="ss">script:
+</span><span class="o">-</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">generate</span>
+<span class="o">-</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">rake</span> <span class="n">deploy</span>
+<span class="ss">env:
+  global:
+  </span><span class="o">-</span> <span class="no">REPO</span><span class="o">=</span><span class="s2">"git@github.com:phatograph/blog"</span>
+  <span class="o">-</span> <span class="ss">secure: </span><span class="o">!</span> <span class="err">'</span><span class="no">Sge5rCthtw0QGTfqVGvkVMVP</span><span class="o">/</span><span class="mi">4</span><span class="no">RQwwnjM0YYnxeTmImi4cwWQkXDXSuctkKz</span>
+
+      <span class="no">FoGzyvzB75Zbu86Yf9yD5M</span><span class="o">+</span><span class="mi">2</span><span class="no">QOdYru4DZdq</span><span class="o">/</span><span class="n">d17AEnwFnB</span><span class="o">+</span><span class="no">ETjxRcnSbzJaK</span></code></pre></figure>
+
+<p>The rest of the file is the encrypted key from <code>travis encrypt</code>, just leave it alone.</p>
+
+<p>What this does is it would decrypt the keys, assign them to <code>$id_rsa_00</code>, <code>$id_rsa_01</code>, <code>$id_rsa_02</code> and so on, gather them together in <code>~/.ssh/id_rsa_base64</code>. Then run a <code>base64 --decode --ignore-garbage</code> to make <code>~/.ssh/id_rsa</code>. Now we have our ssh key for Travis to push to GitHub, really nice. The left is just set the path to push, generate, and deploy.</p>
+
+<h3 id="job-is-done">Job is done</h3>
+
+<p>So far it seems too complex to write a blog. But for me it’s fun to figure these things out (and it works). I have my blog, it’s under <a href="https://github.com/phatograph/blog/tree/master">version control</a>, it’s <a href="https://github.com/phatograph/blog/">open source</a>, even its own <a href="https://travis-ci.org/phatograph/blog">CI</a>. Octopress and friends are cool for me for now. ;)</p>
+
+    </div>
+    <div id="disqus_thread"></div>
+    <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+       var disqus_config = function () {
+       this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+       this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+       };
+     */
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//phatoblog.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        2013 – 2019 &copy; <a href="http://phatograph.com">phatograph.com</a>
+      </div>
+    </div>
+
+    <!-- START GA -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15209814-9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-15209814-9');
+    </script>
+    <!-- END GA -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+
+    <script>
+      Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/components/'
+
+      Prism.plugins.NormalizeWhitespace.setDefaults({
+        'remove-initial-line-feed': true,
+      });
+    </script>
+  </body>
+</html>
